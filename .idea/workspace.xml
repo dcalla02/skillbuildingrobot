@@ -6,9 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f3348b15-d11b-44be-ae48-1d297ecdace2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/teacherctrl.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/teacherctrl.xml" />
-    </list>
+    <list default="true" id="f3348b15-d11b-44be-ae48-1d297ecdace2" name="Default" comment="" />
     <ignored path="skillbuildingrobot.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
