@@ -6,7 +6,8 @@
     android:weightSum="1">
 <RelativeLayout
     android:layout_width="fill_parent"
-    android:layout_height="60dp">
+    android:layout_height="60dp"
+    android:id="@+id/header">
 
     <TextView
         android:id="@+id/instruction"
@@ -35,7 +36,8 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:id="@+id/middle">
 
         <ImageView
             android:id="@+id/placemat"
@@ -43,8 +45,6 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/skillbuildingrobot_placemat"
             android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/test"
-            android:layout_alignStart="@+id/test"
             android:layout_marginLeft="22dp"
             android:layout_marginStart="22dp" />
 
@@ -59,6 +59,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
             android:layout_margin="5dp"
+            android:onClick="togglePlate"
 
             app:srcCompat="@drawable/skillbuildingrobot_plate" />
 
@@ -71,7 +72,8 @@
             android:layout_toRightOf="@+id/btn-fork"
             android:layout_toEndOf="@+id/btn-fork"
             android:layout_marginLeft="38dp"
-            android:layout_marginStart="38dp" />
+            android:layout_marginStart="38dp"
+            android:onClick="toggleFork"/>
 
         <ImageView
             android:id="@+id/spoon"
@@ -83,7 +85,8 @@
             android:layout_alignBottom="@+id/knife"
             android:layout_alignLeft="@+id/knife"
             android:layout_alignStart="@+id/knife"
-            android:layout_marginStart="30dp" />
+            android:layout_marginStart="30dp"
+            android:onClick="toggleSpoon"/>
 
         <ImageView
             android:id="@+id/knife"
@@ -94,7 +97,8 @@
             app:srcCompat="@drawable/skillbuildingrobot_knife"
             android:layout_alignBottom="@+id/plate"
             android:layout_alignRight="@+id/plate"
-            android:layout_alignEnd="@+id/plate" />
+            android:layout_alignEnd="@+id/plate"
+            android:onClick="toggleKnife"/>
 
         <Button
             android:id="@+id/btn-plate"
@@ -136,6 +140,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></RelativeLayout>
+        android:layout_height="fill_parent"
+        android:id="@+id/footer"></RelativeLayout>
 
 </LinearLayout>
