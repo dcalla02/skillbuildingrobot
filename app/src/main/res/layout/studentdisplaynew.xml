@@ -37,112 +37,139 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="200dp"
-        android:id="@+id/middle">
+        android:id="@+id/middle"
+        android:background="@drawable/skillbuildingrobot_placemat">
 
-        <ImageView
-            android:id="@+id/placemat"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/skillbuildingrobot_placemat"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp"
-            android:visibility="visible"/>
+            android:layout_toRightOf="@+id/linearLayout3"
+            android:layout_toEndOf="@+id/linearLayout3">
 
-        <ImageView
-            android:id="@+id/plate"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
+            <ImageView
+                android:id="@+id/knife"
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:layout_marginEnd="145dp"
+                android:layout_marginRight="145dp"
+                app:srcCompat="@drawable/skillbuildingrobot_knife"
+                android:onClick="toggleKnife"
+                android:visibility="visible"
+                android:layout_alignParentBottom="true"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_margin="5dp"
-            android:onClick="togglePlate"
-            android:visibility="visible"
+            android:layout_alignParentStart="true">
 
-            app:srcCompat="@drawable/skillbuildingrobot_plate" />
+            <Button
+                android:id="@+id/btnplate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plate"
 
-        <ImageView
-            android:id="@+id/fork"
-            android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            app:srcCompat="@drawable/skillbuildingrobot_fork"
-            android:layout_marginLeft="38dp"
-            android:layout_marginStart="38dp"
-            android:onClick="toggleFork"
-            android:visibility="visible"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/btnfork"
-            android:layout_toEndOf="@+id/btnfork" />
+             />
 
-        <ImageView
-            android:id="@+id/spoon"
-            android:layout_width="wrap_content"
-            android:layout_height="140dp"
-            app:srcCompat="@drawable/skillbuildingrobot_spoon"
-            android:layout_marginLeft="28dp"
-            android:layout_marginStart="28dp"
-            android:onClick="toggleSpoon"
-            android:visibility="visible"
-            android:layout_alignParentBottom="true"
-            android:layout_alignLeft="@+id/placemat" />
+            <Button
+                android:id="@+id/btnfork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fork"
 
-        <ImageView
-            android:id="@+id/knife"
-            android:layout_width="wrap_content"
-            android:layout_height="160dp"
-            android:layout_marginEnd="145dp"
-            android:layout_marginRight="145dp"
-            app:srcCompat="@drawable/skillbuildingrobot_knife"
-            android:onClick="toggleKnife"
-            android:visibility="visible"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/placemat"
-            android:layout_alignEnd="@+id/placemat" />
+                 />
 
-        <Button
-            android:id="@+id/btnplate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Plate"
+            <Button
+                android:id="@+id/btnknife"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Knife"
+                 />
+
+            <Button
+                android:id="@+id/btnspoon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Spoon"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:layout_toEndOf="@+id/linearLayout"
+            android:id="@+id/linearLayout4">
+
+            <ImageView
+                android:id="@+id/fork"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                app:srcCompat="@drawable/skillbuildingrobot_fork"
+                android:layout_marginLeft="38dp"
+                android:layout_marginStart="38dp"
+                android:visibility="visible"
+
+                />
+    </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+            android:id="@+id/linearLayout3"
             android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/placemat"
-            android:layout_alignStart="@+id/placemat" />
+            android:layout_toRightOf="@+id/linearLayout4"
+            android:layout_toEndOf="@+id/linearLayout4">
+            <ImageView
+                android:id="@+id/plate"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
 
-        <Button
-            android:id="@+id/btnfork"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fork"
-            android:layout_below="@+id/btnplate"
-            android:layout_alignLeft="@+id/placemat"
-            android:layout_alignStart="@+id/placemat" />
+                android:layout_margin="5dp"
+                android:visibility="visible"
 
-        <Button
-            android:id="@+id/btnknife"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Knife"
-            android:layout_below="@+id/btnfork"
-            android:layout_alignLeft="@+id/placemat"
-            android:layout_alignStart="@+id/placemat" />
+                app:srcCompat="@drawable/skillbuildingrobot_plate"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btnspoon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+            android:id="@+id/linearLayout2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+            <ImageView
+                android:id="@+id/spoon"
+                android:layout_width="wrap_content"
+                android:layout_height="140dp"
+                app:srcCompat="@drawable/skillbuildingrobot_spoon"
+                android:layout_marginLeft="28dp"
+                android:layout_marginStart="28dp"
+                android:visibility="visible"
+                 />
 
-            android:text="Spoon"
-            android:layout_below="@+id/btnknife"
-            android:layout_alignLeft="@+id/placemat"
-            android:layout_alignStart="@+id/placemat" />
+        </LinearLayout>
 
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/footer"></RelativeLayout>
+        android:id="@+id/footer">
+
+    </RelativeLayout>
 
 </LinearLayout>

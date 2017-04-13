@@ -32,7 +32,7 @@ public class studentdisplay extends AppCompatActivity implements View.OnClickLis
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.studentdisplay);
+        setContentView(R.layout.studentdisplaynew);
 
         img_plate = (ImageView) findViewById(R.id.plate);
         img_fork = (ImageView) findViewById(R.id.fork);
@@ -64,6 +64,7 @@ public class studentdisplay extends AppCompatActivity implements View.OnClickLis
                 else {
                     img_plate.setVisibility(img_plate.INVISIBLE);
                 }
+                break;
 
                 case R.id.btnfork:
                 if (img_fork.getVisibility() == img_fork.INVISIBLE){
@@ -72,6 +73,8 @@ public class studentdisplay extends AppCompatActivity implements View.OnClickLis
                 else {
                     img_fork.setVisibility(img_fork.INVISIBLE);
                 }
+                break;
+
             case R.id.btnknife:
                 if (img_knife.getVisibility() == img_knife.INVISIBLE){
                     img_knife.setVisibility(img_knife.VISIBLE);
@@ -79,13 +82,19 @@ public class studentdisplay extends AppCompatActivity implements View.OnClickLis
                 else {
                     img_knife.setVisibility(img_knife.INVISIBLE);
                 }
+                break;
+
             case R.id.btnspoon:
                 if (img_spoon.getVisibility() == img_spoon.INVISIBLE){
                     img_spoon.setVisibility(img_spoon.VISIBLE);
                 }
+
                 else {
                     img_spoon.setVisibility(img_spoon.INVISIBLE);
                 }
+                break;
+
+
         }
     }
 }
