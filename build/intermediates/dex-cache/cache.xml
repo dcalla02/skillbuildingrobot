@@ -30,21 +30,21 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ab7c2867b5960916535557d992fc436e7877fa0">
+        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_cf88154739d45dd38058d68280d0ced5fd4c5596/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/DanCallahan/.android/build-cache/cdbfe89ea0f15c6bac09639493c9b674ec91264b/output/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
         <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0f297fd70041bc2a01278960276ae910b3083abe/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3308af7d521c09cd5e995116fa9bc1d7c802a718">
-        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_cf88154739d45dd38058d68280d0ced5fd4c5596/classes.dex" />
     </item>
     <item
         is-multidex="true"
