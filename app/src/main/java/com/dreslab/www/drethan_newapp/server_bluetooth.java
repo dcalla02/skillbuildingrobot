@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
 
-public class server_bluetooth extends Activity {
+public class server_bluetooth extends Activity implements View.OnClickListener {
     //constants declaration
     Button b1,b2,b3,b4;
     ListView lv;
@@ -37,6 +37,18 @@ public class server_bluetooth extends Activity {
     TextView textStatus;
     GridView gridview;
     ImageButton home_back;
+
+    ImageView img_plate;
+    ImageView img_fork;
+    ImageView img_knife;
+    ImageView img_spoon;
+
+    Button text;
+    Button audio;
+    Button flash;
+    Button show;
+    Button next;
+
 
 
     private UUID MY_UUID;
@@ -58,6 +70,17 @@ public class server_bluetooth extends Activity {
         b2 = (Button) findViewById(R.id.button2);
         b3 = (Button) findViewById(R.id.button3);
         b4 = (Button) findViewById(R.id.button4);
+
+        img_plate = (ImageView) findViewById(R.id.plate);
+        img_fork = (ImageView) findViewById(R.id.fork);
+        img_knife = (ImageView) findViewById(R.id.knife);
+        img_spoon = (ImageView) findViewById(R.id.spoon);
+
+        text = (Button) findViewById(R.id.add_text);
+        audio = (Button) findViewById(R.id.play_audio);
+        flash = (Button) findViewById(R.id.flash_image);
+        show = (Button) findViewById(R.id.show_image);
+        next = (Button) findViewById(R.id.next_step);
 
         layout1 =  (LinearLayout)  findViewById(R.id.layout1);
         layout2 = (LinearLayout) findViewById(R.id.layout2);
@@ -100,6 +123,26 @@ public class server_bluetooth extends Activity {
         myName = MY_UUID.toString();
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.add_text:
+
+                break;
+            case R.id.play_audio:
+                /*audio*/
+                break;
+            case R.id.flash_image:
+                /*flash*/
+                break;
+            case R.id.show_image:
+                /*show image*/
+                break;
+            case R.id.next_step:
+                /*next step*/
+                break;
+        }
+    }
     public void on(View v) {
         if (!BA.isEnabled()) {
             Intent turnOn = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
