@@ -36,32 +36,14 @@
 
     <RelativeLayout
         android:id="@+id/middle"
+        
         android:layout_width="fill_parent"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_height="200dp"
         android:background="@drawable/skillbuildingrobot_placemat">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/linearLayout3"
-            android:layout_toRightOf="@+id/linearLayout3"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/knife"
-                android:layout_width="wrap_content"
-                android:layout_height="160dp"
-                android:layout_marginTop="15dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="145dp"
-                android:layout_marginRight="145dp"
-                android:onClick="toggleKnife"
-                android:visibility="visible"
-                app:srcCompat="@drawable/skillbuildingrobot_knife" />
-        </LinearLayout>
+        
 <!--
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -102,49 +84,33 @@
                 android:text="Spoon" />
         </LinearLayout>
 -->
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/linearLayout"
-            android:layout_toRightOf="@+id/linearLayout"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/fork"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:layout_marginLeft="38dp"
-                android:layout_marginStart="38dp"
-                android:visibility="visible"
-                android:layout_marginTop="15dp"
-                app:srcCompat="@drawable/skillbuildingrobot_fork"
-
-                />
-        </LinearLayout>
+      
 
 
         <LinearLayout
+            android:gravity="center_vertical"
             android:id="@+id/linearLayout3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:alig
+            android:orientation="vertical"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/linearLayout4"
-            android:layout_toRightOf="@+id/linearLayout4"
-            android:orientation="vertical">
-
+            android:layout_toRightOf="@+id/plate"
+            android:layout_toEndOf="@+id/plate">
             <ImageView
-                android:id="@+id/plate"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_margin="5dp"
+                android:id="@+id/knife"
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:onClick="toggleKnife"
                 android:visibility="visible"
-
-                app:srcCompat="@drawable/skillbuildingrobot_plate" />
+                app:srcCompat="@drawable/skillbuildingrobot_knife"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/linearLayout2"
+                android:layout_toStartOf="@+id/linearLayout2" />
         </LinearLayout>
 
         <LinearLayout
+            android:gravity="center_vertical"
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -157,13 +123,37 @@
                 android:id="@+id/spoon"
                 android:layout_width="wrap_content"
                 android:layout_height="140dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="28dp"
-                android:layout_marginStart="28dp"
                 android:visibility="visible"
                 app:srcCompat="@drawable/skillbuildingrobot_spoon" />
 
         </LinearLayout>
+
+        
+<LinearLayout
+    android:layout_width=""
+    android:layout_height=""></LinearLayout>
+        <ImageView
+            android:id="@+id/plate"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            app:srcCompat="@drawable/skillbuildingrobot_plate" />
+
+        <ImageView
+            android:id="@+id/fork"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_alignTop="@+id/knife"
+            android:layout_marginEnd="11dp"
+
+            android:layout_marginRight="11dp"
+            android:layout_toLeftOf="@+id/plate"
+            android:layout_toStartOf="@+id/plate"
+            android:visibility="visible"
+            app:srcCompat="@drawable/skillbuildingrobot_fork" />
 
     </RelativeLayout>
 
