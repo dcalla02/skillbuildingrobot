@@ -32,7 +32,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     //constants declaration
     Button b1,b2,b3,b4;
     ListView lv;
-    LinearLayout layout1, layout2;
+    LinearLayout bluetooth_connect_layout, main_nav, teacher_display;
     ImageView bluetooth_indicate;
     TextView textStatus;
     GridView gridview;
@@ -82,9 +82,11 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         show = (Button) findViewById(R.id.show_image);
         next = (Button) findViewById(R.id.next_step);
 
-        layout1 =  (LinearLayout)  findViewById(R.id.layout1);
-        layout2 = (LinearLayout) findViewById(R.id.layout2);
-        layout2.setVisibility(View.GONE);
+        bluetooth_connect_layout =  (LinearLayout)  findViewById(R.id.bluetooth_connect_layout);
+        main_nav = (LinearLayout) findViewById(R.id.main_nav);
+        main_nav.setVisibility(View.GONE);
+        teacher_display =(LinearLayout) findViewById(R.id.teacher_display);
+        teacher_display.setVisibility(View.GONE);
 
         textStatus = (TextView) findViewById(R.id.textStatus);
         lv =         (ListView) findViewById(R.id.listView);
@@ -123,23 +125,42 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         myName = MY_UUID.toString();
     }
 
+
     @Override
     public void onClick(View view) {
+        String output;
+        byte[] bytesToSend;
+
+
         switch (view.getId()){
             case R.id.add_text:
-
+                output = "text";
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 break;
             case R.id.play_audio:
                 /*audio*/
+                output = "audio";
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 break;
             case R.id.flash_image:
                 /*flash*/
+                output = "flash";
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 break;
             case R.id.show_image:
                 /*show image*/
+                output = "show";
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 break;
             case R.id.next_step:
                 /*next step*/
+                output = "next";
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 break;
         }
     }
@@ -226,10 +247,11 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                         @Override
                         public void run() {
                             textStatus.setText(strConnected);
-                            layout1.setVisibility(View.GONE);
+                            bluetooth_connect_layout.setVisibility(View.GONE);
                             Toast.makeText(getApplicationContext(),"CONNECTED",
                                     Toast.LENGTH_SHORT).show();
-                            layout2.setVisibility(View.VISIBLE);
+                            main_nav.setVisibility(View.VISIBLE);
+                            teacher_display.setVisibility(View.VISIBLE);
                         }
                     });
                     manageMyConnectedSocket(socket);
