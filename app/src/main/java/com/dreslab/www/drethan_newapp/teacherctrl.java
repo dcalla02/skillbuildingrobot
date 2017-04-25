@@ -9,5 +9,9 @@ import android.view.View;
 
 public class teacherctrl extends AppCompatActivity implements View.OnClickListener{
 
-    
+
+    @Override
+    public void onClick(View view) {
+        
+    }
 }
