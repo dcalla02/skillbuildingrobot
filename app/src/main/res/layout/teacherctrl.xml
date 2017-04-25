@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
-
+>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@drawable/skillbuildingrobot_placemat">
+        android:background="@drawable/skillbuildingrobot_placemat"
+        android:id="@+id/relativeLayout2">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
@@ -64,27 +65,74 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout3">
+
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="15dp"
             android:text="Step #:"
-            android:textSize="14dp"/>
+            android:textSize="14dp"
+            android:id="@+id/textView" />
+
         <TextView
-            android:layout_width="fill_parent"
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="INSTRUCTION"
             android:textSize="18dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="69dp"
-            android:layout_marginStart="69dp" />
-
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/textView"
+            android:layout_toEndOf="@+id/textView" />
 
     </RelativeLayout>
-    <RelativeLayout
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"></RelativeLayout>
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Send hints to student:"
+        android:textSize="14dp"/>
+
+    <Button
+        android:id="@+id/add_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Add Detailed Instructions" />
+
+    <Button
+        android:id="@+id/play_audio"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Play audio" />
+
+    <Button
+        android:id="@+id/flash_image"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="show item location" />
+    <Button
+        android:id="@+id/show_image"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="display item on screen" />
+    <Button
+        android:id="@+id/next_step"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Correct!  Go to Next Step" />
+
+
 
 </LinearLayout>
