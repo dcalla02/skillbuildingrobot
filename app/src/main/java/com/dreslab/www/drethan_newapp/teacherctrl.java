@@ -12,6 +12,6 @@ public class teacherctrl extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        
+
     }
 }
