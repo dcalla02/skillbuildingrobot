@@ -31,160 +31,160 @@
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:id="@+id/bluetooth_connect_layout">
+    <!--<LinearLayout-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:orientation="vertical"-->
+        <!--android:id="@+id/bluetooth_connect_layout">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textStatus"
-            android:textStyle="italic"
-            android:text="Not Connected"
-            android:textSize="22sp"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/button4"
-            android:layout_alignStart="@+id/button4"
-            android:textColor="#ffffff" />
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/textStatus"-->
+            <!--android:textStyle="italic"-->
+            <!--android:text="Not Connected"-->
+            <!--android:textSize="22sp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignLeft="@+id/button4"-->
+            <!--android:layout_alignStart="@+id/button4"-->
+            <!--android:textColor="#ffffff" />-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Turn On"
-                android:id="@+id/button"
-                android:clickable="true"
-                android:background="@android:color/transparent"
-                android:onClick="on"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Turn On"-->
+                <!--android:id="@+id/button"-->
+                <!--android:clickable="true"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:onClick="on"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true" />-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Get visible"
-                android:background="@android:color/transparent"
-                android:onClick="visible"
-                android:id="@+id/button2"
-                android:layout_below="@+id/button"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="50dp" />
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Get visible"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:onClick="visible"-->
+                <!--android:id="@+id/button2"-->
+                <!--android:layout_below="@+id/button"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_marginTop="50dp" />-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="List devices"
-                android:onClick="list"
-                android:id="@+id/button3"
-                android:background="@android:color/transparent"
-                android:layout_alignTop="@+id/button2"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="List devices"-->
+                <!--android:onClick="list"-->
+                <!--android:id="@+id/button3"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:layout_alignTop="@+id/button2"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentEnd="true" />-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="turn off"
-                android:background="@android:color/transparent"
-                android:onClick="off"
-                android:id="@+id/button4"
-                android:layout_below="@+id/button"
-                android:layout_centerHorizontal="true" />
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="turn off"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:onClick="off"-->
+                <!--android:id="@+id/button4"-->
+                <!--android:layout_below="@+id/button"-->
+                <!--android:layout_centerHorizontal="true" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Paired devices:"
-                android:id="@+id/textView2"
-                android:textColor="#e910cc"
-                android:textSize="20dp"
-                android:layout_below="@+id/button2"
-                android:layout_toLeftOf="@+id/button3"
-                android:layout_toStartOf="@+id/button3"
-                android:layout_marginTop="54dp" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Paired devices:"-->
+                <!--android:id="@+id/textView2"-->
+                <!--android:textColor="#e910cc"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_below="@+id/button2"-->
+                <!--android:layout_toLeftOf="@+id/button3"-->
+                <!--android:layout_toStartOf="@+id/button3"-->
+                <!--android:layout_marginTop="54dp" />-->
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="connect"
-                android:onClick="connect"
-                android:background="@android:color/transparent"
-                android:id="@+id/connect"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="connect"-->
+                <!--android:onClick="connect"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:id="@+id/connect"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentEnd="true" />-->
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/listView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textView2"/>
-        </RelativeLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/main_nav">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/back_home"
-                android:onClick="home"
-                android:src="@drawable/home_icon_small"
-                android:background="@android:color/transparent"
-                android:layout_alignParentTop="true"
-                />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:id="@+id/bluetooth_indicator"
-                android:src="@drawable/bluetooth_connected"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-        </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="select an image:"
-            android:paddingBottom="10dp"/>
-        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/gridview"
-            android:layout_width="fill_parent"
-            android:layout_height="404dp"
-            android:columnWidth="30dp"
-            android:numColumns="2"
-            android:verticalSpacing="30dp"
-            android:horizontalSpacing="30dp"
-            android:stretchMode="columnWidth"
-            android:gravity="center"
-            android:clickable="true"
-            android:scrollIndicators="end|right"
-            android:nestedScrollingEnabled="true" />
+            <!--<ListView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/listView"-->
+                <!--android:layout_alignParentLeft="true"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_below="@+id/textView2"/>-->
+        <!--</RelativeLayout>-->
 
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:id="@+id/main_nav">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--&gt;-->
+
+            <!--<ImageButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/back_home"-->
+                <!--android:onClick="home"-->
+                <!--android:src="@drawable/home_icon_small"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--/>-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="40dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:id="@+id/bluetooth_indicator"-->
+                <!--android:src="@drawable/bluetooth_connected"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentEnd="true" />-->
+
+        <!--</RelativeLayout>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="select an image:"-->
+            <!--android:paddingBottom="10dp"/>-->
+        <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:id="@+id/gridview"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="404dp"-->
+            <!--android:columnWidth="30dp"-->
+            <!--android:numColumns="2"-->
+            <!--android:verticalSpacing="30dp"-->
+            <!--android:horizontalSpacing="30dp"-->
+            <!--android:stretchMode="columnWidth"-->
+            <!--android:gravity="center"-->
+            <!--android:clickable="true"-->
+            <!--android:scrollIndicators="end|right"-->
+            <!--android:nestedScrollingEnabled="true" />-->
+
+
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/teacher_display"

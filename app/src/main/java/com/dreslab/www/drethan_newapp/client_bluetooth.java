@@ -37,6 +37,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class client_bluetooth extends ActionBarActivity {
 
@@ -276,6 +277,7 @@ public class client_bluetooth extends ActionBarActivity {
 
         }
     }
+
     private void display_responds(String s){
         switch(s){
             case "text":

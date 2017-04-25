@@ -27,6 +27,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class server_bluetooth extends Activity implements View.OnClickListener {
     //constants declaration
@@ -62,6 +63,18 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     private static final String TAG = "DR_ETHAN_DEBUG_TAG";
     private static final int DISCOVER_DURATION = 300;
 
+
+    private void flash_image(ImageView v) throws InterruptedException {
+        v.setVisibility(View.VISIBLE);
+        TimeUnit.MILLISECONDS.sleep(500);
+        v.setVisibility(View.INVISIBLE);
+        TimeUnit.MILLISECONDS.sleep(500);
+        v.setVisibility(View.VISIBLE);
+        TimeUnit.MILLISECONDS.sleep(500);
+        v.setVisibility(View.INVISIBLE);
+        TimeUnit.MILLISECONDS.sleep(500);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,9 +151,11 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.add_text:
-                output = Integer.toString(counter);
-                bytesToSend = output.getBytes();
-                myThreadConnected.write(bytesToSend);
+                try {
+                    flash_image((ImageView) findViewById(R.id.plate));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 
                 break;
