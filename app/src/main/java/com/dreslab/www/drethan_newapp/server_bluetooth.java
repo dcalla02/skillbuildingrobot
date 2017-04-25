@@ -49,7 +49,9 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     Button show;
     Button next;
 
-
+    String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
+    String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
+    int counter;
 
     private UUID MY_UUID;
     private String myName;
@@ -70,6 +72,8 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         b2 = (Button) findViewById(R.id.button2);
         b3 = (Button) findViewById(R.id.button3);
         b4 = (Button) findViewById(R.id.button4);
+
+        counter = 0;
 
         img_plate = (ImageView) findViewById(R.id.plate);
         img_fork = (ImageView) findViewById(R.id.fork);
@@ -134,9 +138,11 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.add_text:
-                output = "text";
+                output = Integer.toString(counter);
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
+
+
                 break;
             case R.id.play_audio:
                 /*audio*/

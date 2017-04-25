@@ -40,6 +40,16 @@ import java.util.UUID;
 
 public class client_bluetooth extends ActionBarActivity {
 
+    ImageView img_plate;
+    ImageView img_fork;
+    ImageView img_knife;
+    ImageView img_spoon;
+
+    String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
+    String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
+
+
+
     private static final int REQUEST_ENABLE_BT = 1;
 
     BluetoothAdapter bluetoothAdapter;
@@ -69,6 +79,11 @@ public class client_bluetooth extends ActionBarActivity {
         textInfo = (TextView)findViewById(R.id.info);
         textStatus = (TextView)findViewById(R.id.status);
         listViewPairedDevice = (ListView)findViewById(R.id.pairedlist);
+
+        img_plate = (ImageView) findViewById(R.id.plate);
+        img_fork = (ImageView) findViewById(R.id.fork);
+        img_knife = (ImageView) findViewById(R.id.knife);
+        img_spoon = (ImageView) findViewById(R.id.spoon);
 
         layout1 = (LinearLayout)findViewById(R.id.layout1_c);
         layout2 = (LinearLayout)findViewById(R.id.layout2_c);
@@ -262,37 +277,57 @@ public class client_bluetooth extends ActionBarActivity {
         }
     }
     private void display_responds(String s){
-        int i = Integer.parseInt(s.trim());
-        rl.setBackgroundColor(Color.WHITE);
-        picture_display.setImageResource(i);
-        switch (i) {
-            case R.drawable.client_r1_are_you_ready:
+        switch(s){
+            case "text":
+                //text
+                int result = Integer.parseInt(s);
+
                 break;
-            case R.drawable.cc3:
-                rl.setBackgroundResource(R.drawable.gray2_color);
+            case "audio":
+                //audio
                 break;
-            case R.drawable.cc7:
-                rl.setBackgroundResource(R.drawable.gray2_color);
+            case "flash":
+                //flash
                 break;
-            case R.drawable.cc4:
-                rl.setBackgroundResource(R.drawable.gray1_color);
+            case "show":
+                //show
                 break;
-            case R.drawable.cc5:
-                rl.setBackgroundResource(R.drawable.gray1_color);
-                break;
-            case R.drawable.client_r2_goodjob:
-                rl.setBackgroundResource(R.drawable.black_color);
-                break;
-            case R.drawable.client_r3_try_again :
-                rl.setBackgroundResource(R.drawable.gray3_color);
-                break;
-            case R.drawable.client_r4_try_again2:
-               rl.setBackgroundResource(R.drawable.gray3_color);
-                break;
-            case R.drawable.client_r5_done :
-                rl.setBackgroundResource(R.drawable.black_color);
+            case "next":
+                //next
                 break;
         }
+
+//        int i = Integer.parseInt(s.trim());
+//        rl.setBackgroundColor(Color.WHITE);
+//        picture_display.setImageResource(i);
+//        switch (i) {
+//            case R.drawable.client_r1_are_you_ready:
+//                break;
+//            case R.drawable.cc3:
+//                rl.setBackgroundResource(R.drawable.gray2_color);
+//                break;
+//            case R.drawable.cc7:
+//                rl.setBackgroundResource(R.drawable.gray2_color);
+//                break;
+//            case R.drawable.cc4:
+//                rl.setBackgroundResource(R.drawable.gray1_color);
+//                break;
+//            case R.drawable.cc5:
+//                rl.setBackgroundResource(R.drawable.gray1_color);
+//                break;
+//            case R.drawable.client_r2_goodjob:
+//                rl.setBackgroundResource(R.drawable.black_color);
+//                break;
+//            case R.drawable.client_r3_try_again :
+//                rl.setBackgroundResource(R.drawable.gray3_color);
+//                break;
+//            case R.drawable.client_r4_try_again2:
+//               rl.setBackgroundResource(R.drawable.gray3_color);
+//                break;
+//            case R.drawable.client_r5_done :
+//                rl.setBackgroundResource(R.drawable.black_color);
+//                break;
+//        }
         /*Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

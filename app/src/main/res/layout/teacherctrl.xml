@@ -262,10 +262,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
-            android:text="Step #:"
+            android:layout_marginTop="15dp"
+            android:text="Step 1:"
             android:textSize="14dp"
-            android:id="@+id/textView" />
+            android:layout_marginLeft="15dp"
+            android:id="@+id/step_number" />
 
         <TextView
             android:id="@+id/instruction"
@@ -274,8 +275,10 @@
             android:text="INSTRUCTION"
             android:textSize="18dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView" />
+            android:layout_toRightOf="@+id/step_number"
+            android:layout_toEndOf="@+id/step_number"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp" />
 
     </RelativeLayout>
 
