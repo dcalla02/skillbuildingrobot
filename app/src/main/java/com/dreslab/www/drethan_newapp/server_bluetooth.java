@@ -64,17 +64,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     private static final int DISCOVER_DURATION = 300;
 
 
-    private void flash_image(ImageView v) throws InterruptedException {
-        v.setVisibility(View.VISIBLE);
-        TimeUnit.MILLISECONDS.sleep(500);
-        v.setVisibility(View.INVISIBLE);
-        TimeUnit.MILLISECONDS.sleep(500);
-        v.setVisibility(View.VISIBLE);
-        TimeUnit.MILLISECONDS.sleep(500);
-        v.setVisibility(View.INVISIBLE);
-        TimeUnit.MILLISECONDS.sleep(500);
 
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,9 +89,9 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         show = (Button) findViewById(R.id.show_image);
         next = (Button) findViewById(R.id.next_step);
 
-        bluetooth_connect_layout =  (LinearLayout)  findViewById(R.id.bluetooth_connect_layout);
-        main_nav = (LinearLayout) findViewById(R.id.main_nav);
-        main_nav.setVisibility(View.GONE);
+       // bluetooth_connect_layout =  (LinearLayout)  findViewById(R.id.bluetooth_connect_layout);
+        //main_nav = (LinearLayout) findViewById(R.id.main_nav);
+        //main_nav.setVisibility(View.GONE);
         teacher_display =(LinearLayout) findViewById(R.id.teacher_display);
         teacher_display.setVisibility(View.GONE);
 
@@ -151,11 +141,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.add_text:
-                try {
-                    flash_image((ImageView) findViewById(R.id.plate));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
 
 
                 break;

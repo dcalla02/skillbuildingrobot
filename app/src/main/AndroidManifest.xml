@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="false"
         android:largeHeap="true">
-        <activity android:name=".studentdisplay">
+        <activity android:name=".teacherctrl">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
