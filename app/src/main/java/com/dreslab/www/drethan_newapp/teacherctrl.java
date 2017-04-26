@@ -37,8 +37,29 @@ public class teacherctrl extends Activity implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.add_text:
+                flash_image((ImageView) findViewById(R.id.plate));
 
+                break;
+            case R.id.play_audio:
+                /*audio*/
+
+                break;
+            case R.id.flash_image:
+                /*flash*/
+                break;
+            case R.id.show_image:
+                /*show image*/
+                break;
+            case R.id.next_step:
+                /*next step*/
+                break;
+
+        }
     }
+
+
     private void flash_image(ImageView v)  {
 
 
