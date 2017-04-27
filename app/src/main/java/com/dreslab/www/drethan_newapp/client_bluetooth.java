@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,6 +42,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import static com.dreslab.www.drethan_newapp.R.id.animation;
+
 public class client_bluetooth extends ActionBarActivity {
 
     ImageView img_plate;
@@ -46,10 +51,12 @@ public class client_bluetooth extends ActionBarActivity {
     ImageView img_knife;
     ImageView img_spoon;
 
+
     String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
+    String steps[]={"Step 1:", "Step 2:", "Step 3:", "Step 4:"};
 
-
+    private int counter;
 
     private static final int REQUEST_ENABLE_BT = 1;
 
@@ -57,18 +64,20 @@ public class client_bluetooth extends ActionBarActivity {
 
     ArrayList<BluetoothDevice> pairedDeviceArrayList;
 
-    TextView textInfo, textStatus;
+    TextView textInfo, textStatus, instruction, step_number;
     ImageView bluetooth_indicate, picture_display;
     ListView listViewPairedDevice;
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
 
-    LinearLayout layout1, layout2;
+    LinearLayout bluetoothpairing, studentdisplay;
     ImageButton home_back;
     //EditText inputField;
     //Button btnSend;
     //PopupWindow pwindow;
     RelativeLayout rl;
+
+    AnimationDrawable flashplate, flashfork, flashspoon, flashknife;
 
     ThreadConnectBTdevice myThreadConnectBTdevice;
     ThreadConnected myThreadConnected;
@@ -86,14 +95,27 @@ public class client_bluetooth extends ActionBarActivity {
         img_knife = (ImageView) findViewById(R.id.knife);
         img_spoon = (ImageView) findViewById(R.id.spoon);
 
-        layout1 = (LinearLayout)findViewById(R.id.layout1_c);
-        layout2 = (LinearLayout)findViewById(R.id.layout2_c);
-        layout2.setVisibility(View.GONE);
+        img_plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
+        flashplate = (AnimationDrawable) img_plate.getBackground();
 
-        bluetooth_indicate = (ImageView) findViewById(R.id.bluetooth_indicator);
-        home_back = (ImageButton) findViewById(R.id.home_back);
-        picture_display = (ImageView) findViewById(R.id.picture_display);
-        rl = (RelativeLayout)findViewById(R.id.colorSensor_indicator);
+        img_fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
+        flashfork = (AnimationDrawable) img_fork.getBackground();
+
+        img_knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
+        flashknife = (AnimationDrawable) img_knife.getBackground();
+
+        img_spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
+        flashspoon = (AnimationDrawable) img_spoon.getBackground();
+
+        counter = 0;
+
+        instruction = (TextView) findViewById(R.id.instruction);
+        step_number = (TextView) findViewById(R.id.step_number);
+
+        bluetoothpairing = (LinearLayout)findViewById(R.id.bluetooth_pairing);
+        studentdisplay = (LinearLayout)findViewById(R.id.studentdisplay);
+        studentdisplay.setVisibility(View.GONE);
+
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
             Toast.makeText(this,
@@ -248,8 +270,8 @@ public class client_bluetooth extends ActionBarActivity {
                     public void run() {
                         textStatus.setText(msgconnected);
                         listViewPairedDevice.setVisibility(View.GONE);
-                        layout1.setVisibility(View.GONE);
-                        layout2.setVisibility(View.VISIBLE);
+                        bluetoothpairing.setVisibility(View.GONE);
+                        studentdisplay.setVisibility(View.VISIBLE);
                     }});
 
                 startThreadConnected(bluetoothSocket);
@@ -278,24 +300,65 @@ public class client_bluetooth extends ActionBarActivity {
         }
     }
 
+    private void flash(int item) {
+        switch (item){
+            case 0:
+                flashplate.start();
+                break;
+            case 1:
+                flashfork.start();
+                break;
+            case 2:
+                flashknife.start();
+                break;
+            case 3:
+                flashspoon.start();
+                break;
+
+
+        }
+    }
+    private void show(int item) {
+        switch (item){
+            case 0:
+                img_plate.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                img_fork.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                img_knife.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                img_spoon.setVisibility(View.VISIBLE);
+                break;
+
+
+        }
+    }
     private void display_responds(String s){
         switch(s){
             case "text":
                 //text
-                int result = Integer.parseInt(s);
-
+                instruction.setText(hints[counter]);
                 break;
             case "audio":
                 //audio
                 break;
             case "flash":
                 //flash
+                flash(counter);
                 break;
             case "show":
                 //show
+                show(counter);
                 break;
             case "next":
                 //next
+                show(counter);
+                counter++;
+                instruction.setText(instructions[counter]);
+                step_number.setText(steps[counter]);
                 break;
         }
 

@@ -141,9 +141,9 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.add_text:
-
-
-
+                output = "text";
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 break;
             case R.id.play_audio:
                 /*audio*/
@@ -166,6 +166,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
             case R.id.next_step:
                 /*next step*/
                 output = "next";
+                counter++;
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
                 break;

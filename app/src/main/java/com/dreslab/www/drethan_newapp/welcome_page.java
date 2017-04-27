@@ -68,7 +68,7 @@ public class welcome_page extends ActionBarActivity {
        listNavTools.add(new NavigateTools("Bluetooth Help", "Having problem with connecting?",R.drawable.bluetoothhelp));
        listNavTools.add(new NavigateTools("Connect  Bluetooth", "Connect",R.drawable.bluetooth1));
        listNavTools.add(new NavigateTools("About/Admin", "Want to know more?",R.drawable.about));
-       listNavTools.add(new NavigateTools("Student Display Test", "test", R.drawable.skillbuildingrobot_plate));
+       //listNavTools.add(new NavigateTools("Student Display Test", "test", R.drawable.skillbuildingrobot_plate));
 
 
 

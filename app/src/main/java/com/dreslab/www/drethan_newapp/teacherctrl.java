@@ -1,7 +1,9 @@
 package com.dreslab.www.drethan_newapp;
 
 import android.app.Activity;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,6 +36,17 @@ public class teacherctrl extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacherctrl);
 
+        text = (Button) findViewById(R.id.add_text);
+        audio = (Button) findViewById(R.id.play_audio);
+        flash = (Button) findViewById(R.id.flash_image);
+        show = (Button) findViewById(R.id.show_image);
+        next = (Button) findViewById(R.id.next_step);
+
+        img_fork = (ImageView) findViewById(R.id.fork);
+        img_spoon = (ImageView) findViewById(R.id.spoon);
+        img_knife = (ImageView) findViewById(R.id.knife);
+        img_plate = (ImageView) findViewById(R.id.plate);
+
     }
     @Override
     public void onClick(View view) {
@@ -61,8 +74,8 @@ public class teacherctrl extends Activity implements View.OnClickListener {
 
 
     private void flash_image(ImageView v)  {
-
-
+        v.setVisibility(View.INVISIBLE);
+        Log.d("TAG", "button pressed");
     }
 }
 
