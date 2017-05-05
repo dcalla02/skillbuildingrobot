@@ -2,31 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/DanCallahan/.android/build-cache/6feb68f38da383f4d7db263db34c65ef2305010d/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6d7d803871e3203465f71a163e7af104f807b446">
-        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f371a6b64b2625c628d3a81072a08eda9eb20ffc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/Users/DanCallahan/.android/build-cache/33e66326fcad94d1004951994ce42d99991d44c4/output/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="f62e763609f65e47dc6c498760a4accf02776788">
-        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e21692d2de44335fbf9d31a128acce0725d0d987/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/DanCallahan/.android/build-cache/6feb68f38da383f4d7db263db34c65ef2305010d/output/jars/libs/internal_impl-24.1.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="f78c2f395cb096f9dc1dc07e729922b8fcd3c4f5">
-        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.1.1_a01ae12ca8d5a5205fde5eafa914f05c8d8eb671/classes.dex" />
+        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/pre-dexed/debug/classes_e21692d2de44335fbf9d31a128acce0725d0d987.jar" />
     </item>
     <item
         is-multidex="true"
@@ -38,13 +20,31 @@
         <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_cf88154739d45dd38058d68280d0ced5fd4c5596/classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/DanCallahan/.android/build-cache/cdbfe89ea0f15c6bac09639493c9b674ec91264b/output/jars/classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/DanCallahan/.android/build-cache/6feb68f38da383f4d7db263db34c65ef2305010d/output/jars/libs/internal_impl-24.1.1.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
-        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0f297fd70041bc2a01278960276ae910b3083abe/classes.dex" />
+        sha1="f78c2f395cb096f9dc1dc07e729922b8fcd3c4f5">
+        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/pre-dexed/debug/internal_impl-24.1.1_a01ae12ca8d5a5205fde5eafa914f05c8d8eb671.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/DanCallahan/.android/build-cache/6feb68f38da383f4d7db263db34c65ef2305010d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6d7d803871e3203465f71a163e7af104f807b446">
+        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/pre-dexed/debug/classes_f371a6b64b2625c628d3a81072a08eda9eb20ffc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/DanCallahan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.1.1/support-annotations-24.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3af19f153122737b372622fa6c81dd11a1c6b999">
+        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/pre-dexed/debug/support-annotations-24.1.1_2c4fb9d0fd49390378dab174003b3809bff0cdbc.jar" />
     </item>
     <item
         is-multidex="true"
@@ -56,22 +56,22 @@
         <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_8367ae86e1f7ff41a6911b090115797c67a15f20/classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/DanCallahan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.1.1/support-annotations-24.1.1.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/DanCallahan/.android/build-cache/cdbfe89ea0f15c6bac09639493c9b674ec91264b/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="3af19f153122737b372622fa6c81dd11a1c6b999">
-        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.1.1_2c4fb9d0fd49390378dab174003b3809bff0cdbc/classes.dex" />
+        sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
+        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/pre-dexed/debug/classes_0f297fd70041bc2a01278960276ae910b3083abe.jar" />
     </item>
     <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/Users/DanCallahan/.android/build-cache/f03758404687f684e8ac45bb4ade220ea8c84ee5/output/jars/classes.jar"
-        jumboMode="true"
+        jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="1256c10604bb098490eab070d76754ac5ceab35c">
-        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e2197a101fbfd28056ad7637f3b8e44c50b0144a/classes.dex" />
+        <dex dex="/Users/DanCallahan/Documents/2017/ADL bot/skillbuildingrobot/app/build/intermediates/pre-dexed/debug/classes_e2197a101fbfd28056ad7637f3b8e44c50b0144a.jar" />
     </item>
 
 </items>

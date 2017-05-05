@@ -91,21 +91,28 @@ public class client_bluetooth extends ActionBarActivity {
         listViewPairedDevice = (ListView)findViewById(R.id.pairedlist);
 
         img_plate = (ImageView) findViewById(R.id.plate);
+        img_plate.setVisibility(View.GONE);
         img_fork = (ImageView) findViewById(R.id.fork);
+        img_fork.setVisibility(View.GONE);
         img_knife = (ImageView) findViewById(R.id.knife);
+        img_knife.setVisibility(View.GONE);
         img_spoon = (ImageView) findViewById(R.id.spoon);
+        img_plate.setVisibility(View.GONE);
 
-        img_plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
-        flashplate = (AnimationDrawable) img_plate.getBackground();
+        instruction.setText(instructions[counter]);
+        step_number.setText(steps[counter]);
 
-        img_fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
-        flashfork = (AnimationDrawable) img_fork.getBackground();
+       // img_plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
+        //flashplate = (AnimationDrawable) img_plate.getBackground();
 
-        img_knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
-        flashknife = (AnimationDrawable) img_knife.getBackground();
+       // img_fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
+        //flashfork = (AnimationDrawable) img_fork.getBackground();
 
-        img_spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
-        flashspoon = (AnimationDrawable) img_spoon.getBackground();
+        //img_knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
+        //flashknife = (AnimationDrawable) img_knife.getBackground();
+
+        //img_spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
+        //flashspoon = (AnimationDrawable) img_spoon.getBackground();
 
         counter = 0;
 
@@ -347,7 +354,7 @@ public class client_bluetooth extends ActionBarActivity {
                 break;
             case "flash":
                 //flash
-                flash(counter);
+                //flash(counter);
                 break;
             case "show":
                 //show

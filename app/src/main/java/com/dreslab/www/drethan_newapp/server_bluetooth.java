@@ -33,10 +33,9 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     //constants declaration
     Button b1,b2,b3,b4;
     ListView lv;
-    LinearLayout bluetooth_connect_layout, main_nav, teacher_display;
+    LinearLayout bluetooth_connect_layout, l2,  main_nav, teacher_display;
     ImageView bluetooth_indicate;
-    TextView textStatus;
-    GridView gridview;
+    TextView textStatus, instruction, step;
     ImageButton home_back;
 
     ImageView img_plate;
@@ -50,8 +49,10 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     Button show;
     Button next;
 
+
     String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
+    String steps[]={"Step 1:", "Step 2:", "Step 3:", "Step 4:"};
     int counter;
 
     private UUID MY_UUID;
@@ -82,6 +83,13 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         img_fork = (ImageView) findViewById(R.id.fork);
         img_knife = (ImageView) findViewById(R.id.knife);
         img_spoon = (ImageView) findViewById(R.id.spoon);
+        //img_plate.setVisibility(View.GONE);
+
+        instruction = (TextView) findViewById(R.id.instruction);
+        step = (TextView) findViewById(R.id.step_number);
+
+        instruction.setText(instructions[counter]);
+        step.setText(steps[counter]);
 
         text = (Button) findViewById(R.id.add_text);
         audio = (Button) findViewById(R.id.play_audio);
@@ -89,7 +97,9 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         show = (Button) findViewById(R.id.show_image);
         next = (Button) findViewById(R.id.next_step);
 
-       // bluetooth_connect_layout =  (LinearLayout)  findViewById(R.id.bluetooth_connect_layout);
+        bluetooth_connect_layout =  (LinearLayout)  findViewById(R.id.layout1);
+        l2 =  (LinearLayout)  findViewById(R.id.layout2);
+        l2.setVisibility(View.GONE);
         //main_nav = (LinearLayout) findViewById(R.id.main_nav);
         //main_nav.setVisibility(View.GONE);
         teacher_display =(LinearLayout) findViewById(R.id.teacher_display);
@@ -99,24 +109,6 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         lv =         (ListView) findViewById(R.id.listView);
         bluetooth_indicate = (ImageView) findViewById(R.id.bluetooth_indicator_server);
         home_back = (ImageButton) findViewById(R.id.home_back_server);
-
-        gridview = (GridView) findViewById(R.id.gridview);
-        imageAdapter = new ImageAdapter(getApplicationContext());
-
-        gridview.setAdapter(imageAdapter);
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(getApplicationContext(), "" + position,
-                        Toast.LENGTH_SHORT).show();
-                if(myThreadConnected!=null){
-                    String numberAsString = Integer.toString(imageAdapter.get_address(position));
-                    byte[] bytesToSend = numberAsString.getBytes();
-                    myThreadConnected.write(bytesToSend);
-                }
-            }
-        });
-
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
             Toast.makeText(this,
@@ -132,6 +124,24 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         myName = MY_UUID.toString();
     }
 
+    private void show(int item) {
+        switch (item){
+            case 0:
+                img_plate.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                img_fork.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                img_knife.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                img_spoon.setVisibility(View.VISIBLE);
+                break;
+
+
+        }
+    }
 
     @Override
     public void onClick(View view) {
@@ -144,6 +154,8 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 output = "text";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
+                instruction.setText(hints[counter]);
+
                 break;
             case R.id.play_audio:
                 /*audio*/
@@ -158,6 +170,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 myThreadConnected.write(bytesToSend);
                 break;
             case R.id.show_image:
+                show(counter);
                 /*show image*/
                 output = "show";
                 bytesToSend = output.getBytes();
@@ -258,8 +271,10 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                             bluetooth_connect_layout.setVisibility(View.GONE);
                             Toast.makeText(getApplicationContext(),"CONNECTED",
                                     Toast.LENGTH_SHORT).show();
-                            main_nav.setVisibility(View.VISIBLE);
+                            //main_nav.setVisibility(View.VISIBLE);
                             teacher_display.setVisibility(View.VISIBLE);
+                            l2.setVisibility(View.VISIBLE);
+
                         }
                     });
                     manageMyConnectedSocket(socket);

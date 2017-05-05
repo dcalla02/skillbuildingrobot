@@ -21,6 +21,15 @@
             android:layout_alignParentTop="true"
             />
 
+    <Button
+        android:id="@+id/next_step"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="Correct!  Go to Next Step" />
+
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -316,11 +325,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="display item on screen" />
-    <Button
-        android:id="@+id/next_step"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Correct!  Go to Next Step" />
+
     </LinearLayout>
 
 
