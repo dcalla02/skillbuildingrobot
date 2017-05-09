@@ -90,6 +90,8 @@ public class client_bluetooth extends ActionBarActivity {
         textStatus = (TextView)findViewById(R.id.status);
         listViewPairedDevice = (ListView)findViewById(R.id.pairedlist);
 
+        counter = 0;
+
         img_plate = (ImageView) findViewById(R.id.plate);
         img_plate.setVisibility(View.GONE);
         img_fork = (ImageView) findViewById(R.id.fork);
@@ -98,6 +100,9 @@ public class client_bluetooth extends ActionBarActivity {
         img_knife.setVisibility(View.GONE);
         img_spoon = (ImageView) findViewById(R.id.spoon);
         img_plate.setVisibility(View.GONE);
+
+        instruction = (TextView) findViewById(R.id.instruction);
+        step_number = (TextView) findViewById(R.id.step_number);
 
         instruction.setText(instructions[counter]);
         step_number.setText(steps[counter]);
@@ -114,10 +119,7 @@ public class client_bluetooth extends ActionBarActivity {
         //img_spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
         //flashspoon = (AnimationDrawable) img_spoon.getBackground();
 
-        counter = 0;
 
-        instruction = (TextView) findViewById(R.id.instruction);
-        step_number = (TextView) findViewById(R.id.step_number);
 
         bluetoothpairing = (LinearLayout)findViewById(R.id.bluetooth_pairing);
         studentdisplay = (LinearLayout)findViewById(R.id.studentdisplay);
@@ -348,6 +350,7 @@ public class client_bluetooth extends ActionBarActivity {
             case "text":
                 //text
                 instruction.setText(hints[counter]);
+                System.out.println(s);
                 break;
             case "audio":
                 //audio
@@ -363,7 +366,7 @@ public class client_bluetooth extends ActionBarActivity {
             case "next":
                 //next
                 show(counter);
-                counter++;
+                counter += 1;
                 instruction.setText(instructions[counter]);
                 step_number.setText(steps[counter]);
                 break;

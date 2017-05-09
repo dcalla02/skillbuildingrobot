@@ -85,6 +85,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         img_spoon = (ImageView) findViewById(R.id.spoon);
         //img_plate.setVisibility(View.GONE);
 
+
         instruction = (TextView) findViewById(R.id.instruction);
         step = (TextView) findViewById(R.id.step_number);
 
@@ -155,7 +156,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
                 instruction.setText(hints[counter]);
-
+                System.out.println("Add Text Button pressed");
                 break;
             case R.id.play_audio:
                 /*audio*/
@@ -179,7 +180,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
             case R.id.next_step:
                 /*next step*/
                 output = "next";
-                counter++;
+                counter += 1;
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
                 break;
