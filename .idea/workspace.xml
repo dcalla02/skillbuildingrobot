@@ -16,8 +16,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/client_bluetooth.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/client_bluetooth.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/server_bluetooth.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/server_bluetooth.java" />
     </list>
@@ -52,11 +50,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="client_bluetooth.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="client_bluetooth.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/client_bluetooth.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+            <state relative-caret-position="190">
+              <caret line="373" column="29" selection-start-line="373" selection-start-column="29" selection-end-line="373" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -88,19 +86,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server_bluetooth.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server_bluetooth.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/server_bluetooth.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="862">
-              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+            <state relative-caret-position="252">
+              <caret line="256" column="16" selection-start-line="256" selection-start-column="16" selection-end-line="256" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9427#10056#0" expanded="true" />
-                <element signature="e#10055#10056#0" expanded="true" />
-                <element signature="e#10664#10866#0" expanded="true" />
-                <element signature="e#10865#10866#0" expanded="true" />
-                <element signature="e#13109#13398#0" expanded="true" />
-                <element signature="e#13397#13398#0" expanded="true" />
+                <element signature="e#11692#12321#0" expanded="true" />
+                <element signature="e#12320#12321#0" expanded="true" />
+                <element signature="e#12929#13131#0" expanded="true" />
+                <element signature="e#13130#13131#0" expanded="true" />
+                <element signature="e#15374#15663#0" expanded="true" />
+                <element signature="e#15662#15663#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1811,8 +1809,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/welcome_page.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/teacherctrl.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/server_bluetooth.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/server_bluetooth.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/client_bluetooth.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/server_bluetooth.java" />
       </list>
     </option>
   </component>
@@ -2147,7 +2145,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="device.picker.selection" value="0123456789ABCDEF" />
+    <property name="device.picker.selection" value="Nexus_7_2012_API_25" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/studentdisplay.java" />
   </component>
   <component name="RecentsManager">
@@ -2997,17 +2995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/server_bluetooth.xml">
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="2415">
-          <caret line="161" column="36" selection-start-line="161" selection-start-column="36" selection-end-line="161" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
@@ -3030,27 +3017,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/server_bluetooth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="862">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9427#10056#0" expanded="true" />
-            <element signature="e#10055#10056#0" expanded="true" />
-            <element signature="e#10664#10866#0" expanded="true" />
-            <element signature="e#10865#10866#0" expanded="true" />
-            <element signature="e#13109#13398#0" expanded="true" />
-            <element signature="e#13397#13398#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/server_bluetooth.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="2415">
+          <caret line="161" column="36" selection-start-line="161" selection-start-column="36" selection-end-line="161" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/client_bluetooth.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+        <state relative-caret-position="190">
+          <caret line="373" column="29" selection-start-line="373" selection-start-column="29" selection-end-line="373" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dreslab/www/drethan_newapp/server_bluetooth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="256" column="16" selection-start-line="256" selection-start-column="16" selection-end-line="256" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11692#12321#0" expanded="true" />
+            <element signature="e#12320#12321#0" expanded="true" />
+            <element signature="e#12929#13131#0" expanded="true" />
+            <element signature="e#13130#13131#0" expanded="true" />
+            <element signature="e#15374#15663#0" expanded="true" />
+            <element signature="e#15662#15663#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

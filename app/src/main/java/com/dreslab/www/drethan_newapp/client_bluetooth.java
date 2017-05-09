@@ -370,6 +370,9 @@ public class client_bluetooth extends ActionBarActivity {
                 instruction.setText(instructions[counter]);
                 step_number.setText(steps[counter]);
                 break;
+            case "END":
+                //End of demo
+                break;
         }
 
 //        int i = Integer.parseInt(s.trim());

@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -21,10 +22,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -56,6 +64,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     int counter;
 
     private UUID MY_UUID;
+    OutputStreamWriter outputStreamWriter;
     private String myName;
     private BluetoothAdapter BA;
     private ImageAdapter imageAdapter;
@@ -64,6 +73,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     private static final String TAG = "DR_ETHAN_DEBUG_TAG";
     private static final int DISCOVER_DURATION = 300;
 
+    private File file;
 
 
 
@@ -84,6 +94,15 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         img_knife = (ImageView) findViewById(R.id.knife);
         img_spoon = (ImageView) findViewById(R.id.spoon);
         //img_plate.setVisibility(View.GONE);
+
+        file = new File("EventLogger.txt");
+
+        // creates the file
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         instruction = (TextView) findViewById(R.id.instruction);
@@ -124,6 +143,21 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         MY_UUID = UUID.fromString("1efb0fa0-d424-11e6-9598-0800200c9a66");
         myName = MY_UUID.toString();
     }
+    private void writeToFile(String input) {
+
+        try {
+            // creates a FileWriter Object
+            FileWriter writer = new FileWriter(file, true);
+
+            // Writes the content to the file
+            writer.write(input);
+            writer.flush();
+            writer.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
 
     private void show(int item) {
         switch (item){
@@ -144,10 +178,28 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         }
     }
 
+    private String parse_log(Date now, int step, String button){
+        String log = "";
+        // Create an instance of SimpleDateFormat used for formatting
+    // the string representation of date (month/day/year)
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+
+    // Using DateFormat format method we can create a string
+    // representation of a date with the defined format.
+        String reportDate = df.format(now);
+
+        log = "Timestamp: " + reportDate + "; Step: " + Integer.toString(step) + "; Hint Used: " + button + "\n";
+
+        return log;
+    }
+
     @Override
     public void onClick(View view) {
-        String output;
+        String output, log;
         byte[] bytesToSend;
+        // Get the date today using Calendar object.
+        Date today = Calendar.getInstance().getTime();
 
 
         switch (view.getId()){
@@ -157,18 +209,26 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 myThreadConnected.write(bytesToSend);
                 instruction.setText(hints[counter]);
                 System.out.println("Add Text Button pressed");
+                log = parse_log(today, counter, "text hint");
+                writeToFile(log);
+
                 break;
             case R.id.play_audio:
                 /*audio*/
                 output = "audio";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
+                log = parse_log(today, counter, "play audio hint");
+                writeToFile(log);
+
                 break;
             case R.id.flash_image:
                 /*flash*/
                 output = "flash";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
+                log = parse_log(today, counter, "flash image hint");
+                writeToFile(log);
                 break;
             case R.id.show_image:
                 show(counter);
@@ -176,13 +236,25 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 output = "show";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
+                log = parse_log(today, counter, "show image hint");
+                writeToFile(log);
+
                 break;
             case R.id.next_step:
                 /*next step*/
+                log = parse_log(today, counter, "step completed");
+                writeToFile(log);
+
                 output = "next";
                 counter += 1;
+                if (counter > 3) {
+                   output = "END";
+                }
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
+
+                //Done
+                
                 break;
         }
     }
