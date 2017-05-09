@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -93,7 +94,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         img_fork = (ImageView) findViewById(R.id.fork);
         img_knife = (ImageView) findViewById(R.id.knife);
         img_spoon = (ImageView) findViewById(R.id.spoon);
-        //img_plate.setVisibility(View.GONE);
+
 
         file = new File("EventLogger.txt");
 
@@ -116,6 +117,13 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         flash = (Button) findViewById(R.id.flash_image);
         show = (Button) findViewById(R.id.show_image);
         next = (Button) findViewById(R.id.next_step);
+
+        text.setOnClickListener(this);
+        audio.setOnClickListener(this);
+        flash.setOnClickListener(this);
+        show.setOnClickListener(this);
+        next.setOnClickListener(this);
+
 
         bluetooth_connect_layout =  (LinearLayout)  findViewById(R.id.layout1);
         l2 =  (LinearLayout)  findViewById(R.id.layout2);
@@ -140,7 +148,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
         BA = BluetoothAdapter.getDefaultAdapter();
         //generate UUID on web: http://www.famkruithof.net/uuid/uuidgen
-        MY_UUID = UUID.fromString("1efb0fa0-d424-11e6-9598-0800200c9a66");
+        MY_UUID = UUID.fromString("7d5c8850-34e9-11e7-9598-0800200c9a66");
         myName = MY_UUID.toString();
     }
     private void writeToFile(String input) {
@@ -159,6 +167,36 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         }
     }
 
+
+    private void flash(int item) {
+        switch (item){
+            case 0:
+                for (int i = 0; i < 3; i++) {
+//                    img_plate.setVisibility(View.VISIBLE);
+//                    Thread.sleep(1000);
+//                    img_plate.setVisibility(View.INVISIBLE);
+////                    System.out.println("Plate shown");
+////                    Thread.sleep(5000);
+////                    img_fork.setVisibility(View.INVISIBLE);
+////                    System.out.println("Plate hidden");
+////                    Thread.sleep(3000);
+//                }
+
+                break;
+
+            case 1:
+                //flashfork.start();
+                break;
+            case 2:
+                //flashknife.start();
+                break;
+            case 3:
+                //flashspoon.start();
+                break;
+
+
+        }
+    }
     private void show(int item) {
         switch (item){
             case 0:
@@ -196,6 +234,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        System.out.println("onClick event called");
         String output, log;
         byte[] bytesToSend;
         // Get the date today using Calendar object.
@@ -204,11 +243,12 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.add_text:
+                System.out.println("Add Text Button pressed");
                 output = "text";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
                 instruction.setText(hints[counter]);
-                System.out.println("Add Text Button pressed");
+
                 log = parse_log(today, counter, "text hint");
                 writeToFile(log);
 
@@ -224,9 +264,14 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 break;
             case R.id.flash_image:
                 /*flash*/
+                try {
+                    flash(counter);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 output = "flash";
-                bytesToSend = output.getBytes();
-                myThreadConnected.write(bytesToSend);
+//                bytesToSend = output.getBytes();
+//                myThreadConnected.write(bytesToSend);
                 log = parse_log(today, counter, "flash image hint");
                 writeToFile(log);
                 break;
@@ -247,14 +292,24 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
                 output = "next";
                 counter += 1;
+
                 if (counter > 3) {
-                   output = "END";
+                    output = "END";
+                    bytesToSend = output.getBytes();
+                    myThreadConnected.write(bytesToSend);
+                    counter = 0;
+                    //pop up, process file
+                    startActivity(new Intent(this, welcome_page.class));
                 }
+
+                instruction.setText(instructions[counter]);
+                step.setText(steps[counter]);
+
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
 
                 //Done
-                
+
                 break;
         }
     }

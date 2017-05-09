@@ -93,13 +93,13 @@ public class client_bluetooth extends ActionBarActivity {
         counter = 0;
 
         img_plate = (ImageView) findViewById(R.id.plate);
-        img_plate.setVisibility(View.GONE);
+        img_plate.setVisibility(View.INVISIBLE);
         img_fork = (ImageView) findViewById(R.id.fork);
-        img_fork.setVisibility(View.GONE);
+        img_fork.setVisibility(View.INVISIBLE);
         img_knife = (ImageView) findViewById(R.id.knife);
-        img_knife.setVisibility(View.GONE);
+        img_knife.setVisibility(View.INVISIBLE);
         img_spoon = (ImageView) findViewById(R.id.spoon);
-        img_plate.setVisibility(View.GONE);
+        img_spoon.setVisibility(View.INVISIBLE);
 
         instruction = (TextView) findViewById(R.id.instruction);
         step_number = (TextView) findViewById(R.id.step_number);
@@ -107,17 +107,17 @@ public class client_bluetooth extends ActionBarActivity {
         instruction.setText(instructions[counter]);
         step_number.setText(steps[counter]);
 
-       // img_plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
-        //flashplate = (AnimationDrawable) img_plate.getBackground();
-
-       // img_fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
-        //flashfork = (AnimationDrawable) img_fork.getBackground();
-
-        //img_knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
-        //flashknife = (AnimationDrawable) img_knife.getBackground();
-
-        //img_spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
-        //flashspoon = (AnimationDrawable) img_spoon.getBackground();
+//        img_plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
+//        flashplate = (AnimationDrawable) img_plate.getBackground();
+//
+//        img_fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
+//        flashfork = (AnimationDrawable) img_fork.getBackground();
+//
+//        img_knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
+//        flashknife = (AnimationDrawable) img_knife.getBackground();
+//
+//        img_spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
+//        flashspoon = (AnimationDrawable) img_spoon.getBackground();
 
 
 
@@ -136,7 +136,7 @@ public class client_bluetooth extends ActionBarActivity {
 
         //generate UUID on web: http://www.famkruithof.net/uuid/uuidgen
         //have to match the UUID on the another device of the BT connection
-        myUUID = UUID.fromString("1efb0fa0-d424-11e6-9598-0800200c9a66");
+        myUUID = UUID.fromString("7d5c8850-34e9-11e7-9598-0800200c9a66");
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
@@ -309,19 +309,25 @@ public class client_bluetooth extends ActionBarActivity {
         }
     }
 
-    private void flash(int item) {
+    private void flash(int item) throws InterruptedException {
         switch (item){
             case 0:
-                flashplate.start();
+                for (int i = 0; i < 3; i++) {
+                    img_plate.setVisibility(View.VISIBLE);
+                    Thread.sleep(500);
+                    img_plate.setVisibility(View.INVISIBLE);
+                    Thread.sleep(300);
+                }
                 break;
+
             case 1:
-                flashfork.start();
+                //flashfork.start();
                 break;
             case 2:
-                flashknife.start();
+                //flashknife.start();
                 break;
             case 3:
-                flashspoon.start();
+                //flashspoon.start();
                 break;
 
 
@@ -357,7 +363,11 @@ public class client_bluetooth extends ActionBarActivity {
                 break;
             case "flash":
                 //flash
-                //flash(counter);
+                try {
+                    flash(counter);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "show":
                 //show
