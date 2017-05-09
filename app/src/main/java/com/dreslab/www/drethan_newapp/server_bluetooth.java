@@ -171,7 +171,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     private void flash(int item) {
         switch (item){
             case 0:
-                for (int i = 0; i < 3; i++) {
+//                for (int i = 0; i < 3; i++) {
 //                    img_plate.setVisibility(View.VISIBLE);
 //                    Thread.sleep(1000);
 //                    img_plate.setVisibility(View.INVISIBLE);
