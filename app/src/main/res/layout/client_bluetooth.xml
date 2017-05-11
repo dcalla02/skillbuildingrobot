@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
-   <!-- <LinearLayout
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:id="@+id/bluetooth_pairing"
@@ -31,7 +31,7 @@
                 android:id="@+id/pairedlist"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-    </LinearLayout> -->
+    </LinearLayout>
 
 
     <LinearLayout
@@ -98,6 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
+                android:paddingLeft="100dp"
                 android:layout_toEndOf="@+id/color_top"
                 android:layout_toRightOf="@+id/color_top"
                 android:background="@drawable/skillbuildingrobot_placemat"
@@ -106,7 +107,7 @@
                 <LinearLayout
                     android:id="@+id/fork"
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentTop="true"
                     android:layout_toLeftOf="@+id/linearLayout"
@@ -125,12 +126,11 @@
                 <LinearLayout
                     android:id="@+id/plate"
                     android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
                     android:layout_width="350dp"
                     android:layout_height="fill_parent"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center_vertical">
-
+                    android:layout_centerHorizontal="true">
                     <!--<ImageView-->
                         <!--android:id="@+id/plate"-->
                         <!--android:layout_width="300dp"-->

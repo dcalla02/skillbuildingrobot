@@ -367,11 +367,7 @@ public class client_bluetooth extends ActionBarActivity {
                 break;
             case "flash":
                 //flash
-                try {
-                    flash(counter);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                plate.setBackgroundResource(R.drawable.flash_plate);
                 break;
             case "show":
                 //show
