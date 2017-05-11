@@ -70,7 +70,7 @@ public class client_bluetooth extends ActionBarActivity {
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
 
-    LinearLayout bluetoothpairing, studentdisplay;
+    LinearLayout bluetoothpairing, studentdisplay, plate, fork, spoon, knife;
     ImageButton home_back;
     //EditText inputField;
     //Button btnSend;
@@ -92,14 +92,14 @@ public class client_bluetooth extends ActionBarActivity {
 
         counter = 0;
 
-        img_plate = (ImageView) findViewById(R.id.plate);
-        img_plate.setVisibility(View.INVISIBLE);
-        img_fork = (ImageView) findViewById(R.id.fork);
-        img_fork.setVisibility(View.INVISIBLE);
-        img_knife = (ImageView) findViewById(R.id.knife);
-        img_knife.setVisibility(View.INVISIBLE);
-        img_spoon = (ImageView) findViewById(R.id.spoon);
-        img_spoon.setVisibility(View.INVISIBLE);
+//        img_plate = (ImageView) findViewById(R.id.plate);
+//        img_plate.setVisibility(View.INVISIBLE);
+//        img_fork = (ImageView) findViewById(R.id.fork);
+//        img_fork.setVisibility(View.INVISIBLE);
+//        img_knife = (ImageView) findViewById(R.id.knife);
+//        img_knife.setVisibility(View.INVISIBLE);
+//        img_spoon = (ImageView) findViewById(R.id.spoon);
+//        img_spoon.setVisibility(View.INVISIBLE);
 
         instruction = (TextView) findViewById(R.id.instruction);
         step_number = (TextView) findViewById(R.id.step_number);
@@ -124,6 +124,11 @@ public class client_bluetooth extends ActionBarActivity {
         bluetoothpairing = (LinearLayout)findViewById(R.id.bluetooth_pairing);
         studentdisplay = (LinearLayout)findViewById(R.id.studentdisplay);
         studentdisplay.setVisibility(View.GONE);
+
+        plate = (LinearLayout)findViewById(R.id.plate);
+        fork = (LinearLayout)findViewById(R.id.fork);
+        spoon = (LinearLayout)findViewById(R.id.spoon);
+        knife = (LinearLayout)findViewById(R.id.knife);
 
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
@@ -312,12 +317,7 @@ public class client_bluetooth extends ActionBarActivity {
     private void flash(int item) throws InterruptedException {
         switch (item){
             case 0:
-                for (int i = 0; i < 3; i++) {
-                    img_plate.setVisibility(View.VISIBLE);
-                    Thread.sleep(500);
-                    img_plate.setVisibility(View.INVISIBLE);
-                    Thread.sleep(300);
-                }
+
                 break;
 
             case 1:
@@ -336,16 +336,20 @@ public class client_bluetooth extends ActionBarActivity {
     private void show(int item) {
         switch (item){
             case 0:
-                img_plate.setVisibility(View.VISIBLE);
+                plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
+                //img_plate.setVisibility(View.VISIBLE);
                 break;
             case 1:
-                img_fork.setVisibility(View.VISIBLE);
+                fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
+                //img_fork.setVisibility(View.VISIBLE);
                 break;
             case 2:
-                img_knife.setVisibility(View.VISIBLE);
+                knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
+                //img_knife.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                img_spoon.setVisibility(View.VISIBLE);
+                spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
+                //img_spoon.setVisibility(View.VISIBLE);
                 break;
 
 
@@ -372,6 +376,7 @@ public class client_bluetooth extends ActionBarActivity {
             case "show":
                 //show
                 show(counter);
+
                 break;
             case "next":
                 //next

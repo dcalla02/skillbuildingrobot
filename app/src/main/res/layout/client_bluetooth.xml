@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:id="@+id/bluetooth_pairing"
@@ -31,150 +31,166 @@
                 android:id="@+id/pairedlist"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-    </LinearLayout>
+    </LinearLayout> -->
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/studentdisplay">
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:id="@+id/header">
+    <LinearLayout
+        android:id="@+id/studentdisplay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/instruction"
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:id="@+id/instruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginStart="28dp"
+                android:text="Place the plate."
+                android:textSize="24sp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/step_number"
+                android:layout_toEndOf="@+id/step_number" />
+
+            <TextView
+                android:id="@+id/step_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="228dp"
+                android:layout_marginStart="228dp"
+                android:text="Step 1:"
+                android:textSize="24sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/middle"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Place the plate."
-            android:textSize="24sp"
-            android:layout_marginLeft="23dp"
-            android:layout_marginStart="23dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/step_number"
-            android:layout_toEndOf="@+id/step_number" />
-
-        <TextView
-            android:id="@+id/step_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Step 1:"
-            android:layout_marginLeft="62dp"
-            android:layout_marginStart="62dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/middle"
-        android:layout_height="200dp"
-        android:layout_width="wrap_content"
-        >
-        <LinearLayout
-            android:id="@+id/animation"
-            android:orientation="horizontal"
-            android:layout_width="130dp"
-            android:layout_height="200dp"
-            android:background="@color/colorPrimary"
-            >
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/placemat"
-            android:orientation="horizontal"
-            android:layout_width="400dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/skillbuildingrobot_placemat"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/animation"
-            android:layout_toEndOf="@+id/animation">
+            android:layout_height="350dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="203dp"
+                android:id="@+id/color_top"
+                android:layout_width="130dp"
+                android:layout_height="175dp"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/linearLayout"
-                android:layout_toStartOf="@+id/linearLayout"
-                android:gravity="center_vertical">
+                android:background="@color/colorWhite"
+                android:orientation="horizontal"></LinearLayout>
 
-                <ImageView
+            <LinearLayout
+                android:id="@+id/color_bottom"
+                android:layout_width="130dp"
+                android:layout_height="175dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="100dp"
+                android:id="@+id/placemat"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/color_top"
+                android:layout_toRightOf="@+id/color_top"
+                android:background="@drawable/skillbuildingrobot_placemat"
+                android:orientation="horizontal">
+
+                <LinearLayout
                     android:id="@+id/fork"
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="150dp"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/skillbuildingrobot_fork" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:gravity="center_vertical"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/linearLayout">
-                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/linearLayout"
+                    android:layout_toStartOf="@+id/linearLayout"
+                    android:gravity="center_vertical">
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/fork"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="250dp"-->
+                        <!--android:layout_marginLeft="100dp"-->
+                        <!--android:visibility="visible"-->
+                        <!--app:srcCompat="@drawable/skillbuildingrobot_fork" />-->
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/plate"
-                    android:padding="1dp"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
+                    android:orientation="horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/skillbuildingrobot_plate" />
+                    android:gravity="center_vertical">
 
-            </LinearLayout>
+                    <!--<ImageView-->
+                        <!--android:id="@+id/plate"-->
+                        <!--android:layout_width="300dp"-->
+                        <!--android:layout_height="300dp"-->
+                        <!--android:layout_centerHorizontal="true"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:padding="1dp"-->
+                        <!--android:visibility="visible"-->
+                        <!--app:srcCompat="@drawable/skillbuildingrobot_plate" />-->
 
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:id="@+id/linearLayout3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                >
-                <ImageView
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/knife"
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="160dp"
-                    android:onClick="toggleKnife"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/skillbuildingrobot_knife"
-                    android:layout_centerVertical="true"
-                    />
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center_vertical">
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/knife"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="260dp"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:onClick="toggleKnife"-->
+                        <!--android:visibility="visible"-->
+                        <!--app:srcCompat="@drawable/skillbuildingrobot_knife" />-->
+                </LinearLayout>
 
 
-
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:id="@+id/linearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/linearLayout3"
-                android:layout_toEndOf="@+id/linearLayout3">
-
-                <ImageView
+                <LinearLayout
                     android:id="@+id/spoon"
                     android:layout_width="wrap_content"
-                    android:layout_height="140dp"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/skillbuildingrobot_spoon" />
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/linearLayout3"
+                    android:layout_toRightOf="@+id/linearLayout3"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/spoon"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="240dp"-->
+                        <!--android:visibility="visible"-->
+                        <!--app:srcCompat="@drawable/skillbuildingrobot_spoon" />-->
+
+                </LinearLayout>
+
 
             </LinearLayout>
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
+        </RelativeLayout>
 
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/footer">
-
-    </RelativeLayout>
-
-</LinearLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -234,7 +234,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        System.out.println("onClick event called");
+
         String output, log;
         byte[] bytesToSend;
         // Get the date today using Calendar object.
@@ -243,7 +243,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.add_text:
-                System.out.println("Add Text Button pressed");
+
                 output = "text";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
@@ -264,11 +264,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 break;
             case R.id.flash_image:
                 /*flash*/
-                try {
-                    flash(counter);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
                 output = "flash";
 //                bytesToSend = output.getBytes();
 //                myThreadConnected.write(bytesToSend);
@@ -281,8 +277,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 output = "show";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
-                log = parse_log(today, counter, "show image hint");
-                writeToFile(log);
+                text.setText("Hide Image");
 
                 break;
             case R.id.next_step:
