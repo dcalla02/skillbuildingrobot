@@ -48,6 +48,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static com.dreslab.www.drethan_newapp.R.id.animation;
+import static com.dreslab.www.drethan_newapp.R.id.color_bottom;
 
 public class client_bluetooth extends ActionBarActivity {
 
@@ -76,7 +77,7 @@ public class client_bluetooth extends ActionBarActivity {
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
 
-    LinearLayout bluetoothpairing, studentdisplay;
+    LinearLayout bluetoothpairing, studentdisplay, color;
     ImageButton home_back;
     //EditText inputField;
     //Button btnSend;
@@ -100,6 +101,8 @@ public class client_bluetooth extends ActionBarActivity {
         listViewPairedDevice = (ListView)findViewById(R.id.pairedlist);
 
         counter = 0;
+
+        color = (LinearLayout) findViewById(color_bottom);
 
         audio_plate = MediaPlayer.create(this, R.raw.audio_plate);
         audio_fork = MediaPlayer.create(this, R.raw.audio_fork);
@@ -452,12 +455,15 @@ public class client_bluetooth extends ActionBarActivity {
                 break;
             case "next":
                 //next
+                color.setBackgroundResource(R.color.colorGreen);
                 bounce(counter);
-
                 show(counter);
+                color.setBackgroundResource(R.color.colorWhite);
                 counter += 1;
-                instruction.setText(instructions[counter]);
-                step_number.setText(steps[counter]);
+                if (counter < 4) {
+                    instruction.setText(instructions[counter]);
+                    step_number.setText(steps[counter]);
+                }
                 break;
             case "END":
                 setContentView(R.layout.congratulation);
@@ -566,8 +572,9 @@ public class client_bluetooth extends ActionBarActivity {
                         public void run() {
                             //textStatus.setText(msgConnectionLost);
                             ////photo.setImageDrawable(Drawable.createFromPath(path))
-                            bluetooth_indicate.setImageResource(R.drawable.bluetooth_notconnected);
-                            //
+                           // bluetooth_indicate.setImageResource(R.drawable.bluetooth_notconnected);
+                        Toast.makeText(getApplicationContext(), msgConnectionLost, Toast.LENGTH_LONG).show();
+                         startActivity(new Intent(getApplicationContext(), welcome_page.class));
                         }});
                     break;
                 }
