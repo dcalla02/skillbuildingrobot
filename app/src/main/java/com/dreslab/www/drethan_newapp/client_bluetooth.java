@@ -56,8 +56,9 @@ public class client_bluetooth extends ActionBarActivity {
     ImageView img_fork;
     ImageView img_knife;
     ImageView img_spoon;
+    ImageView img_green;
 
-    Animation blink, bounce;
+    Animation blink, bounce, green;
 
     String hints[]={"Place the plate in the center of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
@@ -118,6 +119,9 @@ public class client_bluetooth extends ActionBarActivity {
         img_spoon = (ImageView) findViewById(R.id.spoon_img);
         img_spoon.setVisibility(View.INVISIBLE);
 
+        img_green= (ImageView) findViewById(R.id.img_green);
+        img_green.setVisibility(View.INVISIBLE);
+
         instruction = (TextView) findViewById(R.id.instruction);
         step_number = (TextView) findViewById(R.id.step_number);
 
@@ -130,6 +134,9 @@ public class client_bluetooth extends ActionBarActivity {
                 R.anim.flash_fork);
         bounce = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.bounce);
+        green = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.green_flash);
+
 
 
 
@@ -455,10 +462,13 @@ public class client_bluetooth extends ActionBarActivity {
                 break;
             case "next":
                 //next
-                color.setBackgroundResource(R.color.colorGreen);
+                img_green.setVisibility(View.VISIBLE);
+                img_green.startAnimation(green);
+                img_green.setVisibility(View.INVISIBLE);
+
                 bounce(counter);
                 show(counter);
-                color.setBackgroundResource(R.color.colorWhite);
+
                 counter += 1;
                 if (counter < 4) {
                     instruction.setText(instructions[counter]);

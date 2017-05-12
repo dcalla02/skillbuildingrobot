@@ -89,8 +89,15 @@
                 android:layout_width="130dp"
                 android:layout_height="175dp"
                 android:layout_alignParentBottom="true"
-                android:background="@color/colorWhite"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/green"
+                    android:visibility="invisible"
+                    android:id="@+id/img_green"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_marginLeft="100dp"

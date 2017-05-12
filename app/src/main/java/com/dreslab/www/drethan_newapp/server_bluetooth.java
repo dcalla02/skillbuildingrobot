@@ -52,7 +52,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     ListView lv;
     LinearLayout bluetooth_connect_layout, l2, final_layout, teacher_display;
     ImageView bluetooth_indicate;
-    TextView textStatus, instruction, step;
+    TextView textStatus, instruction, step, export_email;
     ImageButton home_back;
 
     ImageView img_plate;
@@ -70,9 +70,11 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
 
     StringBuilder emailmessage;
+
     String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
     String steps[]={"Step 1:", "Step 2:", "Step 3:", "Step 4:"};
+
     int counter;
 
     private UUID MY_UUID;
@@ -111,8 +113,6 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         img_fork = (ImageView) findViewById(R.id.fork);
         img_knife = (ImageView) findViewById(R.id.knife);
         img_spoon = (ImageView) findViewById(R.id.spoon);
-        emailmessage.append("The result of test is: \n");
-
 
 
         //creates file on external(phone)
@@ -349,6 +349,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 writeToFile(today, counter, "step completed");
                 bounce(counter);
                 show(counter);
+                show.setText("SHOW IMAGE");
                 output = "next";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
@@ -586,11 +587,15 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     }
 
     public void save(View v){
+        export_email = (TextView) findViewById(R.id.editText);
         String message = emailmessage.toString();
-        Intent i = new Intent(Intent.ACTION_SEND);
+        Intent i = new Intent(Intent.ACTION_SENDTO);
+        i.setType("text/plain");
         i.setData(Uri.parse("mailto:"));
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"dancallahan05@gmail.com"});
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{export_email.getText().toString()});
+        //subject line
         i.putExtra(Intent.EXTRA_SUBJECT, "Data Test");
+        //sends formatted message
         i.putExtra(Intent.EXTRA_TEXT   , message);
         try {
             startActivity(Intent.createChooser(i, "Send mail..."));
