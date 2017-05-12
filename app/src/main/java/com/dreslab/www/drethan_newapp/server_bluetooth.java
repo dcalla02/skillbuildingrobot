@@ -8,8 +8,11 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.SystemClock;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -25,12 +28,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +50,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     //constants declaration
     Button b1,b2,b3,b4;
     ListView lv;
-    LinearLayout bluetooth_connect_layout, l2,  main_nav, teacher_display;
+    LinearLayout bluetooth_connect_layout, l2, final_layout, teacher_display;
     ImageView bluetooth_indicate;
     TextView textStatus, instruction, step;
     ImageButton home_back;
@@ -63,8 +69,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     Animation blink, bounce;
 
 
-
-
+    StringBuilder emailmessage;
     String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
     String steps[]={"Step 1:", "Step 2:", "Step 3:", "Step 4:"};
@@ -80,7 +85,8 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     private static final String TAG = "DR_ETHAN_DEBUG_TAG";
     private static final int DISCOVER_DURATION = 300;
 
-    private File file;
+    File exportCSV;
+    PrintWriter outfile;
 
 
 
@@ -100,21 +106,25 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 R.anim.bounce);
 
         counter = 0;
-
+        emailmessage = new StringBuilder();
         img_plate = (ImageView) findViewById(R.id.plate);
         img_fork = (ImageView) findViewById(R.id.fork);
         img_knife = (ImageView) findViewById(R.id.knife);
         img_spoon = (ImageView) findViewById(R.id.spoon);
+        emailmessage.append("The result of test is: \n");
 
 
-        file = new File("EventLogger.txt");
 
-        // creates the file
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //creates file on external(phone)
+//        exportCSV =  getAlbumStorageDir("datalog.csv");
+//        if(exportCSV == null){
+//            //startActivity(new Intent(this, welcome_page.class));
+//            Toast.makeText(this,
+//                    "CANNOT SAVE TO THIS DEVICE",
+//                    Toast.LENGTH_LONG).show();
+//            finish();
+//            return;
+//        }
 
 
         instruction = (TextView) findViewById(R.id.instruction);
@@ -140,10 +150,12 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         bluetooth_connect_layout =  (LinearLayout)  findViewById(R.id.layout1);
         l2 =  (LinearLayout)  findViewById(R.id.layout2);
         l2.setVisibility(View.GONE);
-        //main_nav = (LinearLayout) findViewById(R.id.main_nav);
-        //main_nav.setVisibility(View.GONE);
+
         teacher_display =(LinearLayout) findViewById(R.id.teacher_display);
         teacher_display.setVisibility(View.GONE);
+
+        final_layout =(LinearLayout) findViewById(R.id.final_layout);
+        final_layout.setVisibility(View.GONE);
 
         textStatus = (TextView) findViewById(R.id.textStatus);
         lv =         (ListView) findViewById(R.id.listView);
@@ -163,20 +175,26 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         MY_UUID = UUID.fromString("7d5c8850-34e9-11e7-9598-0800200c9a66");
         myName = MY_UUID.toString();
     }
-    private void writeToFile(String input) {
+    private void writeToFile(Date now, int step, String button) {
 
-        try {
-            // creates a FileWriter Object
-            FileWriter writer = new FileWriter(file, true);
-
-            // Writes the content to the file
-            writer.write(input);
-            writer.flush();
-            writer.close();
-        }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
+//        String[] logs = new String[3];
+//
+//
+//        String log = "";
+//        // Create an instance of SimpleDateFormat used for formatting
+//        // the string representation of date (month/day/year)
+      DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//
+//        // Using DateFormat format method we can create a string
+//        // representation of a date with the defined format.
+//
+      String reportDate = df.format(now);
+//        logs[0] = reportDate;
+//        logs[1] = Integer.toString(step);
+//        logs[2] = button;
+        //outfile.write(String.valueOf(logs));
+        String tmp = reportDate + ", " + Integer.toString(step) + ", " + button + "\n";
+        emailmessage.append(tmp);
     }
 
 
@@ -266,26 +284,11 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         }
     }
 
-    private String parse_log(Date now, int step, String button){
-        String log = "";
-        // Create an instance of SimpleDateFormat used for formatting
-    // the string representation of date (month/day/year)
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-
-
-    // Using DateFormat format method we can create a string
-    // representation of a date with the defined format.
-        String reportDate = df.format(now);
-
-        log = "Timestamp: " + reportDate + "; Step: " + Integer.toString(step) + "; Hint Used: " + button + "\n";
-
-        return log;
-    }
 
     @Override
     public void onClick(View view) {
 
-        String output, log;
+        String output;
         byte[] bytesToSend;
         // Get the date today using Calendar object.
         Date today = Calendar.getInstance().getTime();
@@ -299,8 +302,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 myThreadConnected.write(bytesToSend);
                 instruction.setText(hints[counter]);
 
-                log = parse_log(today, counter, "text hint");
-                writeToFile(log);
+                writeToFile(today, counter, "text hint");
 
                 break;
             case R.id.play_audio:
@@ -308,8 +310,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 output = "audio";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
-                log = parse_log(today, counter, "play audio hint");
-                writeToFile(log);
+                writeToFile(today, counter, "play audio hint");
 
                 break;
             case R.id.flash_image:
@@ -319,8 +320,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 output = "flash";
                 bytesToSend = output.getBytes();
                 myThreadConnected.write(bytesToSend);
-                log = parse_log(today, counter, "flash image hint");
-                writeToFile(log);
+                writeToFile(today, counter, "flash image hint");
                 break;
             case R.id.show_image:
 
@@ -346,8 +346,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
             case R.id.next_step:
                 /*next step*/
-                log = parse_log(today, counter, "step completed");
-                writeToFile(log);
+                writeToFile(today, counter, "step completed");
                 bounce(counter);
                 show(counter);
                 output = "next";
@@ -360,13 +359,13 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                     bytesToSend = output.getBytes();
                     myThreadConnected.write(bytesToSend);
                     counter = 0;
-                    //pop up, process file
-                    startActivity(new Intent(this, welcome_page.class));
+                    teacher_display.setVisibility(View.GONE);
+                    final_layout.setVisibility(View.VISIBLE);
                 }
 
                 instruction.setText(instructions[counter]);
                 step.setText(steps[counter]);
-                
+
 
                 //Done
 
@@ -585,4 +584,56 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     public void home(View v){
         startActivity(new Intent(this, welcome_page.class));
     }
+
+    public void save(View v){
+        String message = emailmessage.toString();
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setData(Uri.parse("mailto:"));
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"dancallahan05@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Data Test");
+        i.putExtra(Intent.EXTRA_TEXT   , message);
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getApplicationContext(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+      Toast.makeText(this,
+                "file saved",
+                Toast.LENGTH_LONG).show();
+        finish();
+        //startActivity(new Intent(this, welcome_page.class));
+
+    }
+
+//    public File getAlbumStorageDir(String filename) {
+//
+//
+//        //checks if phone accepts files
+//        String state;
+//
+//        state = Environment.getExternalStorageState();
+//        if (Environment.MEDIA_MOUNTED.equals(state)) {
+//
+//            // Get the directory for the user's public pictures directory.
+//            //File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), filename);
+//            File root = Environment.getExternalStorageDirectory();
+//            File dir = new File(root.getAbsolutePath() + "/StudentReport");
+//            //File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
+//            if (!dir.exists()) {
+//                dir.mkdir();
+//            }
+//            File file = new File(dir, filename);
+//            if (!file.exists()) {
+//                Log.e(TAG, "Directory not created");
+//                return null;
+//            }
+//            return file;
+//        }
+//        else {
+//            Toast.makeText(getApplicationContext(), "SD CARD NOT FOUND", Toast.LENGTH_LONG);
+//            return null;
+//        }
+//
+//    }
+
 }

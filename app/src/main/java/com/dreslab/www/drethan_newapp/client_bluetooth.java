@@ -453,13 +453,14 @@ public class client_bluetooth extends ActionBarActivity {
             case "next":
                 //next
                 bounce(counter);
+
                 show(counter);
                 counter += 1;
                 instruction.setText(instructions[counter]);
                 step_number.setText(steps[counter]);
                 break;
             case "END":
-                //End of demo
+                setContentView(R.layout.congratulation);
                 break;
         }
 

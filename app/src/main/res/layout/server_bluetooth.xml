@@ -300,4 +300,26 @@
             android:text="Correct!  Go to Next Step" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/final_layout"
+        android:orientation="vertical"
+        android:padding="55dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task Complete!"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Would you like to export the data?"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="SAVE"
+            android:onClick="save"/>
+
+    </LinearLayout>
 </RelativeLayout>
