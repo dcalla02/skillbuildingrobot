@@ -1,4 +1,7 @@
 package com.dreslab.www.drethan_newapp;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.os.Handler;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -18,6 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -51,8 +56,9 @@ public class client_bluetooth extends ActionBarActivity {
     ImageView img_knife;
     ImageView img_spoon;
 
+    Animation blink, bounce;
 
-    String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
+    String hints[]={"Place the plate in the center of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
     String steps[]={"Step 1:", "Step 2:", "Step 3:", "Step 4:"};
 
@@ -70,14 +76,17 @@ public class client_bluetooth extends ActionBarActivity {
     ArrayAdapter<BluetoothDevice> pairedDeviceAdapter;
     private UUID myUUID;
 
-    LinearLayout bluetoothpairing, studentdisplay, plate, fork, spoon, knife;
+    LinearLayout bluetoothpairing, studentdisplay;
     ImageButton home_back;
     //EditText inputField;
     //Button btnSend;
     //PopupWindow pwindow;
     RelativeLayout rl;
 
-    AnimationDrawable flashplate, flashfork, flashspoon, flashknife;
+    MediaPlayer audio_plate;
+    MediaPlayer audio_fork;
+    MediaPlayer audio_spoon;
+    MediaPlayer audio_knife;
 
     ThreadConnectBTdevice myThreadConnectBTdevice;
     ThreadConnected myThreadConnected;
@@ -92,14 +101,19 @@ public class client_bluetooth extends ActionBarActivity {
 
         counter = 0;
 
-//        img_plate = (ImageView) findViewById(R.id.plate);
-//        img_plate.setVisibility(View.INVISIBLE);
-//        img_fork = (ImageView) findViewById(R.id.fork);
-//        img_fork.setVisibility(View.INVISIBLE);
-//        img_knife = (ImageView) findViewById(R.id.knife);
-//        img_knife.setVisibility(View.INVISIBLE);
-//        img_spoon = (ImageView) findViewById(R.id.spoon);
-//        img_spoon.setVisibility(View.INVISIBLE);
+        audio_plate = MediaPlayer.create(this, R.raw.audio_plate);
+        audio_fork = MediaPlayer.create(this, R.raw.audio_fork);
+        audio_knife = MediaPlayer.create(this, R.raw.audio_knife);
+        audio_spoon = MediaPlayer.create(this, R.raw.audio_spoon);
+
+        img_plate = (ImageView) findViewById(R.id.plate_img);
+        img_plate.setVisibility(View.INVISIBLE);
+        img_fork = (ImageView) findViewById(R.id.fork_img);
+        img_fork.setVisibility(View.INVISIBLE);
+        img_knife = (ImageView) findViewById(R.id.knife_img);
+        img_knife.setVisibility(View.INVISIBLE);
+        img_spoon = (ImageView) findViewById(R.id.spoon_img);
+        img_spoon.setVisibility(View.INVISIBLE);
 
         instruction = (TextView) findViewById(R.id.instruction);
         step_number = (TextView) findViewById(R.id.step_number);
@@ -107,17 +121,12 @@ public class client_bluetooth extends ActionBarActivity {
         instruction.setText(instructions[counter]);
         step_number.setText(steps[counter]);
 
-//        img_plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
-//        flashplate = (AnimationDrawable) img_plate.getBackground();
-//
-//        img_fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
-//        flashfork = (AnimationDrawable) img_fork.getBackground();
-//
-//        img_knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
-//        flashknife = (AnimationDrawable) img_knife.getBackground();
-//
-//        img_spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
-//        flashspoon = (AnimationDrawable) img_spoon.getBackground();
+
+
+        blink = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.flash_fork);
+        bounce = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.bounce);
 
 
 
@@ -125,10 +134,7 @@ public class client_bluetooth extends ActionBarActivity {
         studentdisplay = (LinearLayout)findViewById(R.id.studentdisplay);
         studentdisplay.setVisibility(View.GONE);
 
-        plate = (LinearLayout)findViewById(R.id.plate);
-        fork = (LinearLayout)findViewById(R.id.fork);
-        spoon = (LinearLayout)findViewById(R.id.spoon);
-        knife = (LinearLayout)findViewById(R.id.knife);
+
 
 
         if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)){
@@ -314,45 +320,105 @@ public class client_bluetooth extends ActionBarActivity {
         }
     }
 
-    private void flash(int item) throws InterruptedException {
+
+    private void show(int item) {
         switch (item){
             case 0:
-
+                img_plate.setVisibility(View.VISIBLE);
                 break;
-
             case 1:
-                //flashfork.start();
+                //fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
+                img_fork.setVisibility(View.VISIBLE);
                 break;
             case 2:
-                //flashknife.start();
+                img_knife.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                //flashspoon.start();
+                img_spoon.setVisibility(View.VISIBLE);
                 break;
 
 
         }
     }
-    private void show(int item) {
+    private void hide(int item) {
         switch (item){
             case 0:
-                plate.setBackgroundResource(R.drawable.skillbuildingrobot_plate);
-                //img_plate.setVisibility(View.VISIBLE);
+                img_plate.setVisibility(View.INVISIBLE);
                 break;
             case 1:
-                fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
-                //img_fork.setVisibility(View.VISIBLE);
+                //fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
+                img_fork.setVisibility(View.INVISIBLE);
                 break;
             case 2:
-                knife.setBackgroundResource(R.drawable.skillbuildingrobot_knife);
-                //img_knife.setVisibility(View.VISIBLE);
+                img_knife.setVisibility(View.INVISIBLE);
                 break;
             case 3:
-                spoon.setBackgroundResource(R.drawable.skillbuildingrobot_spoon);
-                //img_spoon.setVisibility(View.VISIBLE);
+                img_spoon.setVisibility(View.INVISIBLE);
                 break;
 
 
+        }
+    }
+    private void flash(int i){
+        switch(i){
+            case 0:
+                //plate
+
+                img_plate.startAnimation(blink);
+                img_plate.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                //fork
+                img_fork.startAnimation(blink);
+                img_fork.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                //fork
+                img_knife.startAnimation(blink);
+                img_knife.setVisibility(View.INVISIBLE);
+                break;
+            case 3:
+                //fork
+                img_spoon.startAnimation(blink);
+                img_spoon.setVisibility(View.INVISIBLE);
+                break;
+        }
+    }
+    private void bounce(int i){
+        switch(i){
+            case 0:
+                //plate
+
+                img_plate.startAnimation(bounce);
+                break;
+            case 1:
+                //fork
+                img_fork.startAnimation(bounce);
+                break;
+            case 2:
+                //knife
+                img_knife.startAnimation(bounce);
+                break;
+            case 3:
+                //spoon
+                img_spoon.startAnimation(bounce);
+                break;
+        }
+    }
+    private void audio(int i){
+        switch(i){
+            case 0:
+                audio_plate.start();
+                break;
+            case 1:
+                audio_fork.start();
+                break;
+            case 2:
+                audio_knife.start();
+                break;
+            case 3:
+                audio_spoon.start();
+                break;
         }
     }
     private void display_responds(String s){
@@ -364,18 +430,29 @@ public class client_bluetooth extends ActionBarActivity {
                 break;
             case "audio":
                 //audio
+                audio(counter);
                 break;
             case "flash":
                 //flash
-                plate.setBackgroundResource(R.drawable.flash_plate);
+                show(counter);
+                flash(counter);
+
+
                 break;
             case "show":
                 //show
+                bounce(counter);
                 show(counter);
+
+                break;
+            case "hide":
+                hide(counter);
+
 
                 break;
             case "next":
                 //next
+                bounce(counter);
                 show(counter);
                 counter += 1;
                 instruction.setText(instructions[counter]);

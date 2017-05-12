@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -58,6 +60,10 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     Button show;
     Button next;
 
+    Animation blink, bounce;
+
+
+
 
     String hints[]={"Place the plate in the middle of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
@@ -88,6 +94,11 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         b3 = (Button) findViewById(R.id.button3);
         b4 = (Button) findViewById(R.id.button4);
 
+        blink = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.flash_fork);
+        bounce = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.bounce);
+
         counter = 0;
 
         img_plate = (ImageView) findViewById(R.id.plate);
@@ -117,6 +128,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         flash = (Button) findViewById(R.id.flash_image);
         show = (Button) findViewById(R.id.show_image);
         next = (Button) findViewById(R.id.next_step);
+
 
         text.setOnClickListener(this);
         audio.setOnClickListener(this);
@@ -168,41 +180,14 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
     }
 
 
-    private void flash(int item) {
-        switch (item){
-            case 0:
-//                for (int i = 0; i < 3; i++) {
-//                    img_plate.setVisibility(View.VISIBLE);
-//                    Thread.sleep(1000);
-//                    img_plate.setVisibility(View.INVISIBLE);
-////                    System.out.println("Plate shown");
-////                    Thread.sleep(5000);
-////                    img_fork.setVisibility(View.INVISIBLE);
-////                    System.out.println("Plate hidden");
-////                    Thread.sleep(3000);
-//                }
 
-                break;
-
-            case 1:
-                //flashfork.start();
-                break;
-            case 2:
-                //flashknife.start();
-                break;
-            case 3:
-                //flashspoon.start();
-                break;
-
-
-        }
-    }
     private void show(int item) {
         switch (item){
             case 0:
                 img_plate.setVisibility(View.VISIBLE);
                 break;
             case 1:
+                //fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
                 img_fork.setVisibility(View.VISIBLE);
                 break;
             case 2:
@@ -213,6 +198,71 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 break;
 
 
+        }
+    }
+    private void hide(int item) {
+        switch (item){
+            case 0:
+                img_plate.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                //fork.setBackgroundResource(R.drawable.skillbuildingrobot_fork);
+                img_fork.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                img_knife.setVisibility(View.INVISIBLE);
+                break;
+            case 3:
+                img_spoon.setVisibility(View.INVISIBLE);
+                break;
+
+
+        }
+    }
+    private void flash(int i){
+        switch(i){
+            case 0:
+                //plate
+
+                img_plate.startAnimation(blink);
+                img_plate.setVisibility(View.INVISIBLE);
+                break;
+            case 1:
+                //fork
+                img_fork.startAnimation(blink);
+                img_fork.setVisibility(View.INVISIBLE);
+                break;
+            case 2:
+                //fork
+                img_knife.startAnimation(blink);
+                img_knife.setVisibility(View.INVISIBLE);
+                break;
+            case 3:
+                //fork
+                img_spoon.startAnimation(blink);
+                img_spoon.setVisibility(View.INVISIBLE);
+                break;
+        }
+    }
+    private void bounce(int i){
+        switch(i){
+            case 0:
+                //plate
+
+                img_plate.startAnimation(bounce);
+                break;
+            case 1:
+                //fork
+                img_fork.startAnimation(bounce);
+                break;
+            case 2:
+                //knife
+                img_knife.startAnimation(bounce);
+                break;
+            case 3:
+                //spoon
+                img_spoon.startAnimation(bounce);
+                break;
         }
     }
 
@@ -264,28 +314,45 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
                 break;
             case R.id.flash_image:
                 /*flash*/
-
+                show(counter);
+                flash(counter);
                 output = "flash";
-//                bytesToSend = output.getBytes();
-//                myThreadConnected.write(bytesToSend);
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 log = parse_log(today, counter, "flash image hint");
                 writeToFile(log);
                 break;
             case R.id.show_image:
-                show(counter);
-                /*show image*/
-                output = "show";
-                bytesToSend = output.getBytes();
-                myThreadConnected.write(bytesToSend);
-                text.setText("Hide Image");
 
-                break;
+                /*show image*/
+                String s = show.getText().toString();
+                if (s.contains("SHOW IMAGE")){
+                    bounce(counter);
+                    show(counter);
+                    show.setText("HIDE IMAGE");
+                    output = "show";
+                    bytesToSend = output.getBytes();
+                    myThreadConnected.write(bytesToSend);
+                    break;
+                }
+                else{
+                    hide(counter);
+                    output = "hide";
+                    bytesToSend = output.getBytes();
+                    myThreadConnected.write(bytesToSend);
+                    show.setText("SHOW IMAGE");
+                    break;
+                }
+
             case R.id.next_step:
                 /*next step*/
                 log = parse_log(today, counter, "step completed");
                 writeToFile(log);
-
+                bounce(counter);
+                show(counter);
                 output = "next";
+                bytesToSend = output.getBytes();
+                myThreadConnected.write(bytesToSend);
                 counter += 1;
 
                 if (counter > 3) {
@@ -299,9 +366,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
 
                 instruction.setText(instructions[counter]);
                 step.setText(steps[counter]);
-
-                bytesToSend = output.getBytes();
-                myThreadConnected.write(bytesToSend);
+                
 
                 //Done
 

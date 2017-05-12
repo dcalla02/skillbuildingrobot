@@ -134,15 +134,6 @@
                 android:layout_alignParentTop="true"
                 />
 
-            <Button
-                android:id="@+id/next_step"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:text="Correct!  Go to Next Step" />
-
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -278,24 +269,35 @@
             android:id="@+id/add_text"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Add Detailed Instructions" />
+            android:text="ADD TEXT HINT" />
 
         <Button
             android:id="@+id/play_audio"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Play audio" />
+            android:text="PLAY AUDIO FILE" />
 
         <Button
             android:id="@+id/flash_image"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="show item location" />
+            android:text="FLASH IMAGE" />
+
         <Button
             android:id="@+id/show_image"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="display item on screen" />
+            android:text="SHOW IMAGE" />
+
+        <Button
+            android:id="@+id/next_step"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Correct!  Go to Next Step" />
 
     </LinearLayout>
 </RelativeLayout>
