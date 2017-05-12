@@ -60,6 +60,7 @@ public class client_bluetooth extends ActionBarActivity {
 
     Animation blink, bounce, green;
 
+    //EDIT HINTS AND INSTRUCTIONS HERE
     String hints[]={"Place the plate in the center of the placemat.", "Place the fork to the left of plate.", "Place the knife to the right of the plate.", "Place the spoon to the right of the knife."};
     String instructions[]={"Place the plate.", "Place the fork.", "Place the knife.", "Place the spoon."};
     String steps[]={"Step 1:", "Step 2:", "Step 3:", "Step 4:"};
@@ -330,6 +331,7 @@ public class client_bluetooth extends ActionBarActivity {
         }
     }
 
+// EDIT FUNCTIONS HERE
 
     private void show(int item) {
         switch (item){

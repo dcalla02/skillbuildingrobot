@@ -175,6 +175,8 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         MY_UUID = UUID.fromString("7d5c8850-34e9-11e7-9598-0800200c9a66");
         myName = MY_UUID.toString();
     }
+
+    //EMAIL FORMATTING
     private void writeToFile(Date now, int step, String button) {
 
 //        String[] logs = new String[3];
@@ -586,6 +588,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         startActivity(new Intent(this, welcome_page.class));
     }
 
+    // EMAIL PROCESS
     public void save(View v){
         export_email = (TextView) findViewById(R.id.editText);
         String message = emailmessage.toString();
@@ -594,7 +597,7 @@ public class server_bluetooth extends Activity implements View.OnClickListener {
         i.setData(Uri.parse("mailto:"));
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{export_email.getText().toString()});
         //subject line
-        i.putExtra(Intent.EXTRA_SUBJECT, "Data Test");
+        i.putExtra(Intent.EXTRA_SUBJECT, "Data Export");
         //sends formatted message
         i.putExtra(Intent.EXTRA_TEXT   , message);
         try {
