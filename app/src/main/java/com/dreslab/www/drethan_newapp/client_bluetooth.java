@@ -464,6 +464,8 @@ public class client_bluetooth extends ActionBarActivity {
                 break;
             case "next":
                 //next
+
+                //Cues Robo
                 img_green.setVisibility(View.VISIBLE);
                 img_green.startAnimation(green);
                 img_green.setVisibility(View.INVISIBLE);
